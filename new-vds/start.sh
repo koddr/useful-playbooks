@@ -240,3 +240,10 @@ sudo nginx -t && sudo systemctl restart nginx
 
 # Clean
 sudo apt autoremove -y
+
+# Final message
+{
+    echo ""
+    echo "🎉 That's all! It just works."
+    echo ""
+}
