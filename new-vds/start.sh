@@ -188,8 +188,8 @@ sudo nginx -t && sudo systemctl restart nginx
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
 # Create website directory, set ownership
-sudo mkdir -p /var/www/$1/html
 sudo chown -R $USER:$USER /var/www/
+sudo mkdir -p /var/www/$1/html
 
 # Get SSL cert by Certbot
 # Script ask you for:
