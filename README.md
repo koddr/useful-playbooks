@@ -13,5 +13,10 @@ chmod +x snippets-deploy/new-vds/start.sh
 
 # Go to directory and run script
 # Please note: change 'example.com' to your domain!
-cd snippets-deploy/new-vds && ./start.sh example.com
+cd snippets-deploy/new-vds
+./start.sh example.com
 ```
+
+## Options
+
+- `--skip-update` use this second params (after domain name) for skip init update & upgrade part
