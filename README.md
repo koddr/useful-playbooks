@@ -1,6 +1,6 @@
 # snippets-deploy
 
-Useful snippets for deploy
+Useful snippets for deploy.
 
 ## Usage
 
