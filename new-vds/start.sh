@@ -48,7 +48,7 @@ ports=80,443/tcp
 EOL
 
 # Enable firewall
-sudo ufw enable
+sudo ufw enable -y
 
 # Alow connections from NGINX, OpenSSH
 sudo ufw allow "Nginx Full"
@@ -61,15 +61,15 @@ sudo systemctl unmask nginx.service
 sudo cat >/etc/nginx/nginx.conf <<EOL
 worker_processes  auto;
 
-# Add Brotli modules
-load_module "modules/ngx_http_brotli_filter_module.so";
-load_module "modules/ngx_http_brotli_static_module.so";
-
 events {
     use                 epoll;
     multi_accept        on;
     worker_connections  1024;
 }
+
+# Add Brotli modules
+load_module "modules/ngx_http_brotli_filter_module.so";
+load_module "modules/ngx_http_brotli_static_module.so";
 
 http {
     charset       utf-8;
@@ -118,7 +118,6 @@ http {
     # SSL
     ssl_session_timeout       1d;
     ssl_session_tickets       off;
-    ssl_session_timeout       1d;
     ssl_session_cache         shared:SSL:10m;
     ssl_protocols             TLSv1.2 TLSv1.3;
     ssl_ciphers               ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
