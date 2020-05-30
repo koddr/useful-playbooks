@@ -148,6 +148,9 @@ http {
 }
 EOL
 
+# Create configuration directory
+sudo mkdir -p /etc/nginx/conf.d
+
 # Configure Brotli
 sudo cat > /etc/nginx/conf.d/brotli.conf << EOL
 # Brotli
