@@ -69,7 +69,7 @@ sudo ufw allow "OpenSSH"
 sudo systemctl unmask nginx.service
 
 # Configure NGINX
-sudo cat >/etc/nginx/nginx.conf <<EOL
+sudo cat > /etc/nginx/nginx.conf << EOL
 # Add Brotli modules
 load_module "modules/ngx_http_brotli_filter_module.so";
 load_module "modules/ngx_http_brotli_static_module.so";
@@ -149,7 +149,7 @@ http {
 EOL
 
 # Configure Brotli
-sudo cat >/etc/nginx/conf.d/brotli.conf << EOL
+sudo cat > /etc/nginx/conf.d/brotli.conf << EOL
 # Brotli
 brotli            on;
 brotli_static     on;
@@ -164,7 +164,7 @@ brotli_types application/atom+xml application/javascript application/json applic
 EOL
 
 # Add website configuration for getting cert by Certbot
-sudo cat >/etc/nginx/sites-available/$1.conf << EOL
+sudo cat > /etc/nginx/sites-available/$1.conf << EOL
 server {
     listen 80;
     listen [::]:80;
@@ -192,7 +192,7 @@ sudo chown -R $USER:$USER /var/www/
 sudo certbot --nginx certonly
 
 # Add website configuration
-sudo cat >/etc/nginx/sites-available/$1.conf << EOL
+sudo cat > /etc/nginx/sites-available/$1.conf << EOL
 server {
     listen 80;
     listen [::]:80;
