@@ -192,6 +192,11 @@ sudo mkdir -p /var/www/$1/html
 sudo chown -R $USER:$USER /var/www/
 
 # Get SSL cert by Certbot
+# Script ask you for:
+# – Enter email address (your email)
+# - Agree the Terms of Service (A)
+# - Subscribe to Let's Encrypt newsletter (N)
+# - Names would you like to activate HTTPS (1 2)
 sudo certbot --nginx certonly
 
 # Add website configuration
