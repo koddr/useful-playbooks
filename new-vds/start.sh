@@ -232,6 +232,16 @@ server {
     ssl_certificate /etc/letsencrypt/live/$1/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/$1/privkey.pem;
     ssl_trusted_certificate /etc/letsencrypt/live/$1/chain.pem;
+    
+    location ~* ^.+\.(rss|atom|xml|jpg|jpeg|gif|png|svg|ico|rtf|js|css|woff|woff2|ttf|otf)$ {
+        expires 30d;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    etag on;
 }
 EOL
 
