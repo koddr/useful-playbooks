@@ -138,8 +138,13 @@ http {
     # SSL root cert
     ssl_dhparam /etc/ssl/certs/dhparam.pem;
 
-    # Add header
-    add_header Strict-Transport-Security "max-age=63072000" always;
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "no-referrer-when-downgrade" always;
+    add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
     # Load configs
     include /usr/share/nginx/modules/*.conf;
