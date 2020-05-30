@@ -2,14 +2,22 @@
 
 # Welcome and check for domain (first param)
 if [ -n "$1" ]; then
-  echo "👋 Welcome! It's helpful tool for start new VDS"
-  echo "→ Included: NGINX with Brotli, Certbot, ufw firewall"
-  echo "→ Configured: directory and SSL for $1 domain"
+    {
+        echo ""
+        echo "👋 Welcome! It's helpful tool for start new VDS"
+        echo "→ Included: NGINX with Brotli, Certbot, ufw firewall"
+        echo "→ Configured: directory and SSL for $1 domain"
+        echo ""
+    }
 else
-  echo "🤔 Ouch... Domain (first parameter) not supplied!"
-  echo "→ Please run this script, like this:"
-  echo "→   ./start.sh example.com"
-  exit 0
+    {
+        echo ""
+        echo "🤔 Ouch... Domain (first parameter) not supplied!"
+        echo "→ Please run this script, like this:"
+        echo "→   ./start.sh example.com"
+        echo ""
+    }
+    exit 0
 fi
 
 # Update & Upgrade dist, if needed
@@ -48,7 +56,10 @@ ports=80,443/tcp
 EOL
 
 # Enable firewall
-sudo ufw enable -y
+# Please note: in the middle of process, script ask you
+# 'Command may disrupt existing ssh connections. Proceed with operation (y|n)?'
+# Type 'y'
+sudo ufw enable
 
 # Alow connections from NGINX, OpenSSH
 sudo ufw allow "Nginx Full"
@@ -59,6 +70,11 @@ sudo systemctl unmask nginx.service
 
 # Configure NGINX
 sudo cat >/etc/nginx/nginx.conf <<EOL
+# Add Brotli modules
+load_module "modules/ngx_http_brotli_filter_module.so";
+load_module "modules/ngx_http_brotli_static_module.so";
+
+# Start NGINX configuration
 worker_processes  auto;
 
 events {
@@ -66,10 +82,6 @@ events {
     multi_accept        on;
     worker_connections  1024;
 }
-
-# Add Brotli modules
-load_module "modules/ngx_http_brotli_filter_module.so";
-load_module "modules/ngx_http_brotli_static_module.so";
 
 http {
     charset       utf-8;
