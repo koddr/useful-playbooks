@@ -1,5 +1,7 @@
 # snippets-deploy
 
+<img align="right" width="150px" src="logo.svg" alt="logo"/>
+
 Useful snippets for deploy.
 
 ## 💡 Before we start
