@@ -2,7 +2,7 @@
 
 Useful snippets for deploy.
 
-## ⚠️ Before we start
+## 💡 Before we start
 
 <details>
 <summary>Please make sure, that you do all console commands as sudo group user</summary><br/>
@@ -49,7 +49,7 @@ ssh USER@IP
 
 </details>
 
-## Usage
+## 📚 Usage
 
 1. Download script on your VDS by link at `Available scripts` section.
 2. Set establish execution rights to `script_name` (_if needs_):
@@ -64,7 +64,7 @@ sudo chmod +x ./script_name.sh
 sudo ./script_name.sh params --options
 ```
 
-## Available scripts
+## 🎯 Available scripts
 
 ### `./new_vds.sh <domain> [options]`
 
@@ -97,6 +97,6 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 
 - `--skip-update` (_optional_) skip `Update & Upgrade` initial part
 
-## License
+## ⚠️ License
 
 MIT
