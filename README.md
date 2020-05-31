@@ -80,7 +80,7 @@ Configured a new VDS, based on Ubuntu.
 
 - `<domain>` (required) your domain without `www` part (for example, `1wa.co`)
 
-> Please note: Certbot will get the SSL certificates for `1wa.co` and `www.1wa.co`. _If you only need to obtain a certificate for a domain without `www`, unfortunately, this is not supported at this time._ Keep an eye out for updates!
+> Please note: Certbot will get the SSL certificates for both `1wa.co` and `www.1wa.co`. _If you only need to obtain a certificate for a domain without `www`, unfortunately, this is not supported at this time._ Keep an eye out for updates!
 
 #### Options
 
