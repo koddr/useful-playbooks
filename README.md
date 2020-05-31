@@ -70,7 +70,7 @@ sudo ./script_name.sh params --options
 
 ### `./new_vds.sh <domain> [options]`
 
-Auto configure a fresh virtual server for **static website**, runned on `Ubuntu 18.04+`.
+Auto configure a fresh virtual server for **static website**, launched on `Ubuntu 18.04+`.
 
 #### Download
 
