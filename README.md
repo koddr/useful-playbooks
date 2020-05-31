@@ -13,7 +13,9 @@ Create a new user (where `USER` is username you want to add):
 adduser USER
 ```
 
-Add `USER` to `sudo` group:
+Enter password (twice) and leave blank to other personal information.
+
+Now, let's add `USER` to `sudo` group:
 
 ```console
 adduser USER sudo
@@ -49,66 +51,14 @@ ssh USER@IP
 
 ## Usage
 
-Download needed script on your VDS by:
-
-<details>
-<summary>git clone</summary><br/>
-
-Install [`git`](https://git-scm.com/) (_if not installed_):
-
-```console
-sudo apt install git -y
-```
-
-Clone `truewebartisans/snippets-deploy` repository and go to project directory:
-
-```console
-git clone https://github.com/truewebartisans/snippets-deploy.git
-cd snippets-deploy
-```
-
-</details>
-
-<details>
-<summary>wget</summary><br/>
-
-Install [`wget`](https://www.gnu.org/software/wget/) (_if not installed_):
-
-```console
-sudo apt install wget -y
-```
-
-Download `script_name.sh` to current directory:
-
-```console
-wget -O https://github.com/truewebartisans/snippets-deploy/script_name.sh
-```
-
-</details>
-
-<details>
-<summary>curl</summary><br/>
-
-Install [`curl`](https://curl.haxx.se/) (_if not installed_):
-
-```console
-sudo apt install curl -y
-```
-
-Download `script_name.sh` to current directory:
-
-```console
-curl -O https://github.com/truewebartisans/snippets-deploy/script_name.sh
-```
-
-</details>
-
-Set establish execution rights to script (_if needs_):
+1. Download script on your VDS by link at `Available scripts` section.
+2. Set establish execution rights to `script_name` (_if needs_):
 
 ```console
 sudo chmod +x ./script_name.sh
 ```
-Run script with (_or without_) params and options:
+
+3. Run `script_name` with (_or without_) params and options:
 
 ```console
 sudo ./script_name.sh params --options
@@ -118,6 +68,10 @@ sudo ./script_name.sh params --options
 
 ### `./new_vds.sh <domain> [options]`
 
+```console
+wget -O https://github.com/truewebartisans/snippets-deploy/new_vds.sh
+```
+
 Configured a new VDS, based on Ubuntu.
 
 - Update Ubuntu distributive
@@ -125,8 +79,9 @@ Configured a new VDS, based on Ubuntu.
 - Configure `ufw` firewall with protection rules
 - Install Nginx with [`Brotli`](https://github.com/google/brotli) module
 - Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153), [Brotli module](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171) and [static website](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L209-L250)
+- HTTP/2 (443 port) by default
 - Get SSL certificates for domain by [Certbot](https://certbot.eff.org/) with automatically renew
-- Redirect from `www` to non-`www` domain and from `http` to `https`
+- Redirect from `www` to `non-www` domain and from `http` to `https`
 
 #### Params
 
