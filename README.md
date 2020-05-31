@@ -57,10 +57,10 @@ git clone https://github.com/truewebartisans/snippets-deploy.git
 cd snippets-deploy
 
 # Set establish execution rights to script (if needs)
-sudo chmod +x ./script.sh
+sudo chmod +x ./script_name.sh
 
-# Run script
-sudo ./script.sh params --options
+# Run script with (or without) params/options
+sudo ./script_name.sh params --options
 ```
 
 ## Available scripts
@@ -78,11 +78,13 @@ Configured a new VDS, based on Ubuntu.
 
 #### Params
 
-- `<domain>` your domain without `www` part (Certbot will generate SSL certs for `example.com` and `www.example.com`)
+- `<domain>` (required) your domain without `www` part
+
+> Please note: Certbot will get the SSL certificates for both `example.com` and `www.example.com`.
 
 #### Options
 
-- `--skip-update` use this second params (after domain name) to skip update & upgrade part
+- `--skip-update` (optional) skip Update & Upgrade initial part
 
 ## License
 
