@@ -2,7 +2,7 @@
 
 # 🚚 Useful snippets for easily deploy
 
-Useful _hand-crafted_ snippets for **easily** deploy your static website or webapp to **absolutely** fresh virtual server (VDS/VPS) runned on  GNU/Linux. Only **5 minutes** from the first login to complete server setup and start! It just works, thanks to [`bash`](https://www.gnu.org/software/bash/).
+Useful _hand-crafted_ snippets for **easily** deploy your static website or webapp to **absolutely** fresh virtual server (VDS/VPS) launched on GNU/Linux. Only **5 minutes** from the first login to complete server setup and start! **It just works, thanks to [`bash`](https://www.gnu.org/software/bash/)**.
 
 ## 💡 Before we begin
 
