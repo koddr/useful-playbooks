@@ -84,16 +84,16 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 - Update & Upgrade, auto remove packages
 - Configure [`UFW`](https://help.ubuntu.com/community/UFW) firewall with protection rules
 - Install Nginx with [`Brotli`](https://github.com/google/brotli) module
-- Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153), [Brotli module](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171) and [static website](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L209-L250)
+- Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153), [Brotli](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171) and [static website](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L209-L250)
 - HTTP/2 (443 port) by default
-- Get SSL certificates for domain by [Certbot](https://certbot.eff.org/) with automatically renew
+- Get SSL certificates for domain by [`Certbot`](https://certbot.eff.org/) with automatically renew
 - Redirect from `www` to `non-www` domain and from `http` to `https`
 
 #### Params
 
-- `<domain>` (**required**) your domain without `www` part (_for example, `1wa.co`_)
+- `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
 
-> Please note: Certbot will get the SSL certificates for both `1wa.co` and `www.1wa.co`. _If you only need to obtain a certificate for a domain without `www`, unfortunately, this is not supported at this time._ Keep an eye out for updates!
+> Please note: Certbot will get the SSL certificates for both `website.com` and `www.website.com`. _If you only need to obtain a certificate for a domain without `www`, unfortunately, this is not supported at this time._ Keep an eye out for updates!
 
 #### Options
 
