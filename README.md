@@ -49,17 +49,68 @@ ssh USER@IP
 
 ## Usage
 
+Download needed script on your VDS by:
+
+<details>
+<summary>git clone</summary><br/>
+
+Install [`git`](https://git-scm.com/) (_if not installed_):
+
 ```console
-# Clone this repository
+sudo apt install git -y
+```
+
+Clone `truewebartisans/snippets-deploy` repository and go to project directory:
+
+```console
 git clone https://github.com/truewebartisans/snippets-deploy.git
-
-# Go to directory
 cd snippets-deploy
+```
 
-# Set establish execution rights to script (if needs)
+</details>
+
+<details>
+<summary>wget</summary><br/>
+
+Install [`wget`](https://www.gnu.org/software/wget/) (_if not installed_):
+
+```console
+sudo apt install wget -y
+```
+
+Download `script_name.sh` to current directory:
+
+```console
+wget -O https://github.com/truewebartisans/snippets-deploy/script_name.sh
+```
+
+</details>
+
+<details>
+<summary>curl</summary><br/>
+
+Install [`curl`](https://curl.haxx.se/) (_if not installed_):
+
+```console
+sudo apt install curl -y
+```
+
+Download `script_name.sh` to current directory:
+
+```console
+curl -O https://github.com/truewebartisans/snippets-deploy/script_name.sh
+```
+
+</details>
+
+Set establish execution rights to script (_if needs_):
+
+```console
 sudo chmod +x ./script_name.sh
+```
+Run script with (_or without_) params and options:
 
-# Run script with (or without) params/options
+```console
 sudo ./script_name.sh params --options
 ```
 
