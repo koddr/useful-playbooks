@@ -7,7 +7,7 @@ Useful _hand-crafted_ snippets for **easily** deploy your static website or weba
 ## 💡 Before we begin
 
 <details>
-<summary>Please make sure, that you do all console commands as sudo group user</summary><br/>
+<summary>Please make sure, that you do all console commands as sudo group user, but not root</summary><br/>
 
 Create a new user (where `USER` is username you want to add):
 
@@ -26,7 +26,7 @@ adduser USER sudo
 </details>
 
 <details>
-<summary>For security reasons, we recommend to disable possible to login as root user to your VDS</summary><br/>
+<summary>For security reasons, we recommend to disable possible to login as root user to your server</summary><br/>
 
 Open SSH config:
 
@@ -43,7 +43,7 @@ systemctl restart sshd
 exit
 ```
 
-Re-login to your VDS as `USER` (where `IP` is your server IP):
+Re-login to your virtual server as `USER` (where `IP` is your server IP):
 
 ```console
 ssh USER@IP
@@ -53,7 +53,7 @@ ssh USER@IP
 
 ## 📚 Usage
 
-1. Download script on your VDS by link at `Available scripts` section.
+1. Download script on your server by link at `Available scripts` section.
 2. Set establish execution rights to `script_name` (_if needs_):
 
 ```console
