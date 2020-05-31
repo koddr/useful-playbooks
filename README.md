@@ -69,12 +69,12 @@ sudo ./script_name.sh params --options
 
 Configured a new VDS, based on Ubuntu.
 
-- Update & Upgrade, `autoremove` packages
 - Update Ubuntu distributive
-- Nginx with [`Brotli`](https://github.com/google/brotli) module
-- Best practice configs for Nginx and static website
-- SSL for domain by [Certbot](https://certbot.eff.org/) with automatically renew
-- `ufw` firewall with protection rules
+- Update & Upgrade, auto remove packages
+- Configure `ufw` firewall with protection rules
+- Install Nginx with [`Brotli`](https://github.com/google/brotli) module
+- Create configs by best practice for Nginx and static website
+- Get SSL certificates for domain by [Certbot](https://certbot.eff.org/) with automatically renew
 
 #### Params
 
