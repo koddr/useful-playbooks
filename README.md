@@ -88,7 +88,7 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 - HTTP/2 (443 port) by default
 - Get SSL certificates for domain by [`Certbot`](https://certbot.eff.org/) with automatically renew
 - Redirect from `www` to `non-www` domain and from `http` to `https`
-- A folder for website static files is `/var/www/<domain>/html`
+- A folder for website files is `/var/www/<domain>/html`
 
 #### Params
 
