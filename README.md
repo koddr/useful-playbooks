@@ -1,4 +1,4 @@
-<img align="right" width="150px" src="logo.svg" alt="logo"/>
+<img align="right" width="140px" src="logo.svg" alt="logo"/>
 
 # 🚚 Useful snippets for easily deploy
 
