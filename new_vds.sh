@@ -26,7 +26,7 @@ if [ $2 != "--skip-update" ]; then
 fi
 
 # Install apt-add-repository package
-sudo apt-get install software-properties-common -y
+sudo apt install software-properties-common -y
 
 # Add repository for NGINX, Certbot
 sudo apt-add-repository -y ppa:hda-me/nginx-stable && sudo apt-add-repository -y ppa:certbot/certbot
