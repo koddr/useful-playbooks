@@ -94,7 +94,7 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 
 - `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
 
-> ☝️ Please note: Certbot will get the SSL certificates for both `website.com` and `www.website.com`. _If you only need to obtain a certificate for a domain without `www`, unfortunately, this is not supported at this time._
+> ☝️ Please note: Certbot will get the SSL certificates for both `website.com` and `www.website.com`. _If you only need to obtain a certificate for the one domain without `www`, unfortunately, this is not supported at this time._
 
 #### Options
 
