@@ -124,8 +124,9 @@ Configured a new VDS, based on Ubuntu.
 - Update & Upgrade, auto remove packages
 - Configure `ufw` firewall with protection rules
 - Install Nginx with [`Brotli`](https://github.com/google/brotli) module
-- Create configs by best practice for Nginx and static website
+- Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153), [Brotli module](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171) and [static website](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L209-L250)
 - Get SSL certificates for domain by [Certbot](https://certbot.eff.org/) with automatically renew
+- Redirect from `www` to non-`www` domain and from `http` to `https`
 
 #### Params
 
