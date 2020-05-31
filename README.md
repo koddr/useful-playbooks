@@ -68,11 +68,15 @@ sudo ./script_name.sh params --options
 
 ### `./new_vds.sh <domain> [options]`
 
+Configured a new VDS, based on Ubuntu.
+
+#### Download
+
 ```console
-wget -O https://github.com/truewebartisans/snippets-deploy/new_vds.sh
+wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-deploy/master/new_vds.sh
 ```
 
-Configured a new VDS, based on Ubuntu.
+#### Features
 
 - Update Ubuntu distributive
 - Update & Upgrade, auto remove packages
