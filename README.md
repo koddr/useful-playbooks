@@ -1,6 +1,6 @@
-# snippets-deploy
-
 <img align="right" width="150px" src="logo.svg" alt="logo"/>
+
+# snippets-deploy
 
 Useful snippets for deploy.
 
@@ -82,7 +82,7 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 
 - Update Ubuntu distributive
 - Update & Upgrade, auto remove packages
-- Configure `ufw` firewall with protection rules
+- Configure [`UFW`](https://help.ubuntu.com/community/UFW) firewall with protection rules
 - Install Nginx with [`Brotli`](https://github.com/google/brotli) module
 - Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153), [Brotli module](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171) and [static website](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L209-L250)
 - HTTP/2 (443 port) by default
