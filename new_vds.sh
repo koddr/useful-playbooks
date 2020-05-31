@@ -38,7 +38,7 @@ sudo apt update
 sudo apt install brotli nginx nginx-module-brotli ufw python-certbot-nginx -y
 
 # Configure firewall
-sudo cat >/etc/ufw/applications.d/nginx.ini <<EOL
+sudo cat > /etc/ufw/applications.d/nginx.ini << EOL
 [Nginx HTTP]
 title=Web Server
 description=Enable NGINX HTTP traffic
