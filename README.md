@@ -2,7 +2,7 @@
 
 # snippets-deploy
 
-Useful snippets for deploy.
+Useful snippets for **easily** deploy your static website or webapp to **absolutely** fresh virtual server (VDS/VPS) runned on  GNU/Linux. Only **5 minutes** from the first login to complete server setup and start!
 
 ## 💡 Before we start
 
