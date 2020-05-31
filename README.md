@@ -27,8 +27,8 @@ adduser USER sudo
 
 <details>
 <summary>For security reasons, we recommend to disable possible to login as root user to your server</summary><br/>
-
-Open SSH config:
+  
+Only **after** you have created a new user in `sudo` group, open SSH config:
 
 ```console
 nano /etc/ssh/sshd_config
