@@ -100,7 +100,7 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 
 - `--skip-update` (_optional_) skip `Update & Upgrade` initial part
 
-## Media
+## 📺 Media
 
 A list of articles and video lessons, where `snippets-deploy` is used.
 
