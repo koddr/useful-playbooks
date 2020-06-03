@@ -102,11 +102,11 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 
 ## 📺 Media
 
-A list of articles and video lessons, where `snippets-deploy` is used.
-
-> Make [pull requests](https://github.com/truewebartisans/snippets-deploy/pulls) with links to your articles and videos! We will post them right here.
+A list of articles and video lessons, where `snippets-deploy` is used:
 
 - [Automate that! 👊 A practical guide to GitHub Actions: build & deploy a static 11ty website to remote virtual server after push ](https://dev.to/koddr/automate-that-a-practical-guide-to-github-actions-build-deploy-a-static-11ty-website-to-remote-virtual-server-after-push-d19) from [Vic Shóstak](https://github.com/koddr) @ 01 Jun 2020
+
+> Make [pull requests](https://github.com/truewebartisans/snippets-deploy/pulls) with links to your articles and videos! We will post them right here.
 
 ## ⚠️ License
 
