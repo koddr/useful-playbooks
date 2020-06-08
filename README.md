@@ -110,4 +110,4 @@ A list of articles and video lessons, where `snippets-deploy` is used:
 
 ## ⚠️ License
 
-MIT
+MIT &copy; [Vic Shóstak](https://github.com/koddr) & [True web artisans](https://1wa.co/).
