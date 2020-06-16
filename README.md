@@ -72,7 +72,7 @@ sudo ./script_name.sh params --options
 
 #### Description
 
-Auto configure a fresh virtual server for a **static website** or **SPA** (single-page application, based on frontend framework, like [`Preact`](https://preactjs.com/), [`React`](https://reactjs.org/), [`Vue.js`](https://vuejs.org/), [`Svelte`](https://svelte.dev/) or [`Angular`](https://angular.io/)), launched on `Ubuntu 18.04+`.
+Auto configure a fresh virtual server for a **static website** or **SPA** (single-page application, based on frontend framework, like `React`, `Vue.js`, `Svelte` or else), launched on `Ubuntu 18.04+`.
 
 #### Download
 
