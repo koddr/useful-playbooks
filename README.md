@@ -68,6 +68,11 @@ sudo ./script_name.sh params --options
 
 ## 🎯 Available scripts
 
+- [`./new_vds.sh`](https://github.com/truewebartisans/snippets-deploy#new_vdssh-domain-options) for auto configure a fresh virtual server
+- [`./create_ssl.sh`](https://github.com/truewebartisans/snippets-deploy#create_sslsh-domain-options) for create a new SSL certificate
+
+<br/>
+
 ### `./new_vds.sh <domain> [options]`
 
 #### Description
@@ -102,6 +107,8 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 
 - `--skip-update` (_optional_) skip `Update & Upgrade` initial part
 
+<br/>
+
 ### `./create_ssl.sh <domain> [options]`
 
 #### Description
@@ -132,6 +139,8 @@ wget -O create_ssl.sh https://raw.githubusercontent.com/truewebartisans/snippets
 #### Options
 
 - `--skip-install` (_optional_) skip `Install Certbot` part
+
+<br/>
 
 ## 📺 Media
 
