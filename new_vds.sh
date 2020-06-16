@@ -14,7 +14,7 @@ else
         echo ""
         echo "🤔 Ouch... Domain (first parameter) not supplied!"
         echo "→ Please run this script, like this:"
-        echo "→   ./start.sh example.com"
+        echo "→   ./script_name.sh example.com"
         echo ""
     }
     exit 0
@@ -259,6 +259,6 @@ sudo apt autoremove -y
 # Final message
 {
     echo ""
-    echo "🎉 That's all! It just works."
+    echo "🎉 There you go! It just works."
     echo ""
 }
