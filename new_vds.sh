@@ -91,6 +91,9 @@ http {
     server_tokens off;
     log_not_found off;
 
+    # Bucket size for server names hash
+    server_names_hash_bucket_size 64;
+
     # MIME
     include       /etc/nginx/mime.types;
     default_type  application/octet-stream;
