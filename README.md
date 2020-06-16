@@ -1,8 +1,13 @@
-<img align="right" width="132px" src=".github/logo.svg" alt="logo"/>
-
 # 🚚 Useful snippets for easily deploy
 
+<img align="right" width="132px" src=".github/logo.svg" alt="logo"/>
+
 Useful _hand-crafted_ snippets for **easily** deploy your static website or webapp to **absolutely** fresh virtual server (VDS/VPS or Droplet) launched on GNU/Linux. Only **5 minutes** from the first login to complete server setup and start. **There you go! It just works**.
+
+🔔 Snippets short list:
+
+- [`./new_vds.sh`](https://github.com/truewebartisans/snippets-deploy#new_vdssh-domain-options) for auto configure a fresh virtual server
+- [`./create_ssl.sh`](https://github.com/truewebartisans/snippets-deploy#create_sslsh-domain-options) for create a new SSL certificate
 
 ## 💡 Before we begin
 
@@ -67,9 +72,6 @@ sudo ./script_name.sh params --options
 ```
 
 ## 🎯 Available scripts
-
-- [`./new_vds.sh`](https://github.com/truewebartisans/snippets-deploy#new_vdssh-domain-options) for auto configure a fresh virtual server
-- [`./create_ssl.sh`](https://github.com/truewebartisans/snippets-deploy#create_sslsh-domain-options) for create a new SSL certificate
 
 <br/>
 
