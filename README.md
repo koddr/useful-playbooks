@@ -84,7 +84,7 @@ Auto configure a fresh virtual server for a **static website** or **SPA** (singl
 #### Download
 
 ```console
-wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-deploy/master/new_vds.sh
+wget -O new_vds.sh https://shrts.website/sd/new-vds
 ```
 
 #### Features
@@ -120,7 +120,7 @@ Create a new SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org
 #### Download
 
 ```console
-wget -O create_ssl.sh https://raw.githubusercontent.com/truewebartisans/snippets-deploy/master/create_ssl.sh
+wget -O create_ssl.sh https://shrts.website/sd/create-ssl
 ```
 
 #### Features
