@@ -6,7 +6,7 @@ if [ -n "$1" ]; then
         echo ""
         echo "👋 Welcome! It's helpful tool for start new VDS"
         echo "→ Included: NGINX with Brotli, Certbot, ufw firewall"
-        echo "→ Configured: directory and SSL for $1 domain"
+        echo "→ Result: configured NGINX, UFW, Certbot, website directory, SSL for $1 and www.$1 domains"
         echo ""
     }
 else

@@ -102,6 +102,37 @@ wget -O new_vds.sh https://raw.githubusercontent.com/truewebartisans/snippets-de
 
 - `--skip-update` (_optional_) skip `Update & Upgrade` initial part
 
+### `./create_ssl.sh <domain> [options]`
+
+#### Description
+
+Create a new SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org/)_) for your domain with the best practice `NGINX` config and task for CRON to renew.
+
+#### Download
+
+```console
+wget -O create_ssl.sh https://raw.githubusercontent.com/truewebartisans/snippets-deploy/master/create_ssl.sh
+```
+
+#### Features
+
+- Install [`Certbot`](https://certbot.eff.org/)
+- Create config by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/create_ssl.sh#L70-L111)
+- HTTP/2 (443 port) by default
+- Get SSL certificates for domain with automatically renew
+- Redirect from `www` to `non-www` domain and from `http` to `https`
+- A folder for website files is `/var/www/<domain>/html`
+
+#### Params
+
+- `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
+
+> ☝️ Please note: Certbot will get the SSL certificates for both `website.com` and `www.website.com`. _If you only need to obtain a certificate for the one domain with/without `www`, unfortunately, this is not supported at this time._
+
+#### Options
+
+- `--skip-install` (_optional_) skip `Install Certbot` part
+
 ## 📺 Media
 
 A list of articles and video lessons, where `snippets-deploy` is used:
