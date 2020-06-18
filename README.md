@@ -108,6 +108,7 @@ wget -O new_vds.sh https://shrts.website/sd/new-vds
 #### Options
 
 - `--skip-update` (_optional_) skip `Update & Upgrade` initial part
+- `--force` (_optional_) force re-create NGINX config for your domain
 
 <br/>
 
@@ -141,6 +142,7 @@ wget -O create_ssl.sh https://shrts.website/sd/create-ssl
 #### Options
 
 - `--skip-install` (_optional_) skip `Install Certbot` part
+- `--force` (_optional_) force re-create NGINX config for your domain
 
 <br/>
 

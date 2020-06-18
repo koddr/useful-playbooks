@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Welcome and check for domain (first param)
-if [ -n "$1" ]; then
+if [[ -n "$1" ]]; then
     {
         echo ""
         echo "👋 Welcome! It's helpful tool for get new SSL for a domain"
@@ -21,18 +21,25 @@ else
 fi
 
 # Skip install Certbot, if needed
-if [ $2 != "--skip-install" ]; then
+if [[ $2 != "--skip-install" ]] || [[ $3 != "--skip-install" ]]; then
     # Install apt-add-repository package
     sudo apt install software-properties-common -y
 
-    # Add repository for NGINX, Certbot
+    # Add repository for Certbot
     sudo apt-add-repository -y ppa:certbot/certbot
 
-    # Update (again)
+    # Update
     sudo apt update
 
     # Install needed packages
     sudo apt install python-certbot-nginx -y
+fi
+
+# Force re-create config, if needed
+# Be careful, this will be delete exists config of your domain!
+if [[ $2 = "--force" ]] || [[ $3 = "--force" ]]; then
+    # Delete existing config
+    rm /etc/nginx/sites-available/$1.conf
 fi
 
 # Add website configuration for getting cert by Certbot
@@ -113,9 +120,6 @@ EOL
 
 # Restart NGINX (again)
 sudo nginx -t && sudo systemctl restart nginx
-
-# Clean
-sudo apt autoremove -y
 
 # Final message
 {

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Welcome and check for domain (first param)
-if [ -n "$1" ]; then
+if [[ -n "$1" ]]; then
     {
         echo ""
         echo "👋 Welcome! It's helpful tool for start new VDS"
@@ -21,7 +21,7 @@ else
 fi
 
 # Update & Upgrade dist, if needed
-if [ $2 != "--skip-update" ]; then
+if [[ $2 != "--skip-update" ]] || [[ $3 != "--skip-update" ]]; then
     sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade
 fi
 
@@ -173,6 +173,13 @@ brotli_types application/atom+xml application/javascript application/json applic
              font/eot font/opentype font/otf font/truetype image/svg+xml image/vnd.microsoft.icon
              image/x-icon image/x-win-bitmap text/css text/javascript text/plain text/xml;
 EOL
+
+# Force re-create config, if needed
+# Be careful, this will be delete exists config of your domain!
+if [[ $2 = "--force" ]] || [[ $3 = "--force" ]]; then
+    # Delete existing config
+    rm /etc/nginx/sites-available/$1.conf
+fi
 
 # Add website configuration for getting cert by Certbot
 sudo cat > /etc/nginx/sites-available/$1.conf << EOL
