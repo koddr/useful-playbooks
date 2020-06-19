@@ -60,7 +60,7 @@ ssh USER@IP
 
 1. Download script on your server by link at `Available scripts` section.
 
-> ☝️ **Please note:** we're using [`shrts.website`](https://github.com/truewebartisans/shrts.website) project to shorting links for make it easier to copy `wget` command.
+> ☝️ **By the way:** we're using [`shrts.website`](https://github.com/truewebartisans/shrts.website) to shorting links for make it easier to copy `wget` command.
 
 2. Set establish execution rights to `script_name` (_if needs_):
 
