@@ -82,7 +82,11 @@ sudo ./script_name.sh params --options
 
 #### Description
 
-Auto configure a fresh virtual server for a **static website** or **SPA** (single-page application, based on frontend framework, like `React`, `Vue.js`, `Svelte` or else), launched on `Ubuntu 18.04+`.
+Auto configure a fresh virtual server for a **static website** or **SPA** (single-page application, like `React`, `Vue.js`, `Svelte` or else).
+
+#### Tested to work
+
+- Ubuntu `16.04+ LTS`, `18.04+ LTS`
 
 #### Download
 
@@ -120,6 +124,10 @@ wget -O new_vds.sh https://shrts.website/sd/new-vds
 #### Description
 
 Create a new SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org/)_) for your domain with the best practice `NGINX` config and task for CRON to renew.
+
+#### Tested to work
+
+- Ubuntu `16.04+ LTS`, `18.04+ LTS`
 
 #### Download
 
