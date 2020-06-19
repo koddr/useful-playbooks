@@ -28,14 +28,14 @@ fi
 # Install apt-add-repository package
 sudo apt install software-properties-common -y
 
-# Add repository for NGINX, Certbot
-sudo apt-add-repository -y ppa:hda-me/nginx-stable && sudo apt-add-repository -y ppa:certbot/certbot
+# Add repository for Ubuntu universe, NGINX, Certbot
+sudo add-apt-repository -y universe && sudo apt-add-repository -y ppa:hda-me/nginx-stable && sudo apt-add-repository -y ppa:certbot/certbot
 
 # Update (again)
 sudo apt update
 
 # Install needed packages
-sudo apt install brotli nginx nginx-module-brotli ufw python-certbot-nginx -y
+sudo apt install brotli nginx nginx-module-brotli ufw python3-certbot-nginx -y
 
 # Configure firewall
 sudo cat > /etc/ufw/applications.d/nginx.ini << EOL
@@ -264,7 +264,9 @@ EOL
 sudo nginx -t && sudo systemctl restart nginx
 
 # Clean
-sudo apt autoremove -y
+if [[ $2 != "--skip-update" ]] || [[ $3 != "--skip-update" ]]; then
+    sudo apt autoremove -y
+fi
 
 # Final message
 {

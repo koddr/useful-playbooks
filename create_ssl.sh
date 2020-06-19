@@ -25,14 +25,14 @@ if [[ $2 != "--skip-install" ]] || [[ $3 != "--skip-install" ]]; then
     # Install apt-add-repository package
     sudo apt install software-properties-common -y
 
-    # Add repository for Certbot
-    sudo apt-add-repository -y ppa:certbot/certbot
+    # Add repository for Ubuntu universe, Certbot
+    sudo add-apt-repository -y universe && sudo apt-add-repository -y ppa:certbot/certbot
 
     # Update
     sudo apt update
 
     # Install needed packages
-    sudo apt install python-certbot-nginx -y
+    sudo apt install python3-certbot-nginx -y
 fi
 
 # Force re-create config, if needed
