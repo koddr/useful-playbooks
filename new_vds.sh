@@ -25,11 +25,14 @@ if [[ $2 != "--skip-update" ]] || [[ $3 != "--skip-update" ]]; then
     sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade
 fi
 
-# Install apt-add-repository package
-sudo apt install software-properties-common -y
+# If OS is not Debian
+if [[ ! -f /etc/debian_version ]]; then
+    # Install apt-add-repository package
+    sudo apt install software-properties-common -y
 
-# Add repository for Ubuntu universe, NGINX, Certbot
-sudo add-apt-repository -y universe && sudo apt-add-repository -y ppa:hda-me/nginx-stable && sudo apt-add-repository -y ppa:certbot/certbot
+    # Add repository for Ubuntu universe, NGINX, Certbot
+    sudo add-apt-repository -y universe && sudo apt-add-repository -y ppa:hda-me/nginx-stable && sudo apt-add-repository -y ppa:certbot/certbot
+fi
 
 # Update (again)
 sudo apt update
