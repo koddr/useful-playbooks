@@ -127,7 +127,8 @@ Create a new SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org
 
 #### Tested to work
 
-- Ubuntu `16.04+ LTS`, `18.04+ LTS`
+- Ubuntu `18.04+ LTS`, `16.04+ LTS`
+- Debian `10 (Buster)`, `9 (Stretch)`
 
 #### Download
 
