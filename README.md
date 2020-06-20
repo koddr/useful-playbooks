@@ -110,7 +110,7 @@ wget -O new_vds.sh https://shrts.website/sd/new-vds
 
 - `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
 
-> ☝️ Please note: Certbot will get the SSL certificates for both `website.com` and `www.website.com`. _If you only need to obtain a certificate for the one domain with/without `www`, unfortunately, this is not supported at this time._
+> ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`. He'll ask about it at the last step.
 
 #### Options
 
@@ -148,7 +148,7 @@ wget -O create_ssl.sh https://shrts.website/sd/create-ssl
 
 - `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
 
-> ☝️ Please note: Certbot will get the SSL certificates for both `website.com` and `www.website.com`. _If you only need to obtain a certificate for the one domain with/without `www`, unfortunately, this is not supported at this time._
+> ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`. He'll ask about it at the last step.
 
 #### Options
 
