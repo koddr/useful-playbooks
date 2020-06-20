@@ -86,7 +86,7 @@ Auto configure a fresh virtual server for a **static website** or **SPA** (singl
 
 #### Tested to work
 
-- Ubuntu `16.04+ LTS`, `18.04+ LTS`
+- Ubuntu `18.04+ LTS`, `16.04+ LTS`
 
 #### Download
 
