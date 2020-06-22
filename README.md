@@ -166,6 +166,18 @@ A list of articles and video lessons, where `snippets-deploy` is used:
 
 > Make [pull requests](https://github.com/truewebartisans/snippets-deploy/pulls) with links to your articles and videos! We will post them right here.
 
+## ⭐️ Project assistance
+
+If you want to say **thank you** or/and support active development `snippets-deploy`:
+
+1. Add a :octocat: GitHub Star to the project.
+2. Twit about project [on your Twitter](https://twitter.com/intent/tweet?text=Useful%20hand-crafted%20snippets%20for%20easily%20deploy%20your%20static%20website%20or%20webapp%20to%20absolutely%20fresh%20virtual%20server%20%28VDS%2FVPS%20or%20Droplet%29%20launched%20on%20GNU%2FLinux.%20https%3A%2F%2Fgithub.com%2Ftruewebartisans%2Fsnippets-deploy).
+3. Donate some money to project author via PayPal: [@paypal.me/koddr](https://paypal.me/koddr?locale.x=en_EN).
+4. Join DigitalOcean at our [referral link](https://shrts.website/do/server) (your profit is **$100** and we get $25).
+5. Buy awesome [domain name with **5%** discount](https://shrts.website/reg/domain) at REG.COM.
+
+Thanks for your support! 😘 Together, we make this project better every day.
+
 ## ⚠️ License
 
 MIT &copy; [Vic Shóstak](https://github.com/koddr) & [True web artisans](https://1wa.co/).
