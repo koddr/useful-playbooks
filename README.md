@@ -64,7 +64,7 @@ Ansible is a radically simple IT automation system. It handles configuration man
 
 For better readability, please add two association to your `.vscode/settings.json`: for Ansible playbooks and `jinja2` templates.
 
-```json
+```jsonc
 {
   // ...
   "files.associations": {
