@@ -79,9 +79,9 @@ For better readability, please add two association to your `.vscode/settings.jso
 
 ## 📚 Usage
 
-1. Download [ZIP archive](https://github.com/truewebartisans/useful-playbooks/archive/master.zip) or `git clone` this repository.
-2. Go to `useful-playbooks` folder.
-3. Select playbook (see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-playbooks) section).
+1. Download [ZIP archive](https://github.com/truewebartisans/useful-playbooks/archive/master.zip) or `git clone` this repository
+2. Go to the downloaded/clonned folder
+3. Select playbook (see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-playbooks) section)
 4. Run `<playbook_name>` with (_or without_) arguments and extra vars:
 
 ```console
