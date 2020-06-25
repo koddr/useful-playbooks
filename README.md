@@ -2,7 +2,7 @@
 
 <img align="right" width="132px" src=".github/logo.svg" alt="logo"/>
 
-Useful _[Ansible](https://github.com/ansible/ansible) playbooks_ for **easily** deploy your website or webapp to **absolutely** fresh virtual server (VDS/VPS or Droplet) launched on GNU/Linux. Only **3 minutes** from the playbook run to complete setup server and start it. **There you go! It just works**.
+Useful [Ansible](https://github.com/ansible/ansible) playbooks for **easily** deploy your website or webapp to **absolutely** fresh virtual server (VDS/VPS or Droplet) launched on GNU/Linux. Only **3 minutes** from the playbook run to complete setup server and start it. **There you go! It just works**.
 
 🔔 Playbooks short list:
 
@@ -81,11 +81,11 @@ For better readability, please add two association to your `.vscode/settings.jso
 
 1. Download [ZIP archive](https://github.com/truewebartisans/useful-playbooks/archive/master.zip) or `git clone` this repository.
 2. Go to `useful-playbooks` folder.
-3. Select playbook (_see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-playbooks) section_).
-4. Run playbook with (_or without_) arguments and extra vars:
+3. Select playbook (see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-playbooks) section).
+4. Run `<playbook_name>` with (_or without_) arguments and extra vars:
 
 ```console
-ansible-playbook <playbook_name> -u <user> --extra-vars "host=<host>"
+ansible-playbook <playbook_name>-playbook.yml [args] [extra vars...]
 ```
 
 ## 🎯 Available playbooks
