@@ -1,142 +1,152 @@
-# 🚚 Useful snippets for easily deploy
+# 🚚 Useful playbooks for easily deploy
 
 <img align="right" width="132px" src=".github/logo.svg" alt="logo"/>
 
-Useful _hand-crafted_ snippets for **easily** deploy your static website or webapp to **absolutely** fresh virtual server (VDS/VPS or Droplet) launched on GNU/Linux. Only **5 minutes** from the first login to complete server setup and start. **There you go! It just works**.
+Useful _[Ansible](https://github.com/ansible/ansible) playbooks_ for **easily** deploy your website or webapp to **absolutely** fresh virtual server (VDS/VPS or Droplet) launched on GNU/Linux. Only **3 minutes** from the playbook run to complete setup server and start it. **There you go! It just works**.
 
-🔔 Snippets short list:
+🔔 Playbooks short list:
 
-- [`./new_vds.sh`](https://github.com/truewebartisans/snippets-deploy#new_vdssh-domain-options) for auto configure a fresh virtual server
-- [`./create_ssl.sh`](https://github.com/truewebartisans/snippets-deploy#create_sslsh-domain-options) for create a new SSL certificate
+- [`new_vds`](#new_vds) for auto configure a fresh virtual server
+- [`create_ssl`](#create_ssl) for create a new website with SSL certificate
 
 ## 💡 Before we begin
 
 <details>
-<summary>Please make sure, that you do all console commands as sudo group user, but not root</summary><br/>
+<summary>What is Ansible?</summary><br/>
 
-Create a new user (where `USER` is username you want to add):
+Follow [Wikipedia](<https://en.wikipedia.org/wiki/Ansible_(software)>) page:
 
-```console
-adduser USER
-```
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Ansible_logo.svg" width="128px" align="right" alt="ansible logo" />
 
-Enter password (twice) and leave blank to other personal information.
+_Ansible is an open-source software provisioning, configuration management, and application-deployment tool enabling infrastructure as code. It runs on many Unix-like systems, and can configure both Unix-like systems as well as Microsoft Windows. It includes its own declarative language to describe system configuration._
 
-Now, let's add `USER` to `sudo` group:
-
-```console
-adduser USER sudo
-```
+_Ansible was written by Michael DeHaan and acquired by Red Hat in 2015. Ansible is agentless, temporarily connecting remotely via SSH or Windows Remote Management (allowing remote PowerShell execution) to do its tasks._
 
 </details>
 
 <details>
-<summary>For security reasons, we recommend to disable possible to login as root user to your server</summary><br/>
-  
-Only **after** you have created a new user in `sudo` group, open SSH config:
+<summary>Why it's so good to use for me?</summary><br/>
 
-```console
-nano /etc/ssh/sshd_config
-```
+Ansible is a radically simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex changes like zero-downtime rolling updates with load balancers easy.
 
-Find `PermitRootLogin` and set it to `no`, save (`ctrl + o`) and close `nano` editor (`ctrl + x`).
+- Have a dead simple setup process and a minimal learning curve.
+- Manage machines very quickly and in parallel.
+- Avoid custom-agents and additional open ports, be agentless by leveraging the existing SSH daemon.
+- Describe infrastructure in a language that is both machine and human friendly.
+- Focus on security and easy auditability/review/rewriting of content.
+- Manage new remote machines instantly, without bootstrapping any software.
+- Allow module development in any dynamic language, not just Python.
+- Be usable as non-root.
+- Be the easiest IT automation system to use, ever.
 
-Restart SSH service and logout:
+:octocat: GitHub: https://github.com/ansible/ansible
 
-```console
-systemctl restart sshd
-exit
-```
+</details>
 
-Re-login to your virtual server as `USER` (where `IP` is your server IP):
+<details>
+<summary>How to work with Ansible and playbooks?</summary><br/>
 
-```console
-ssh USER@IP
+1. Be sure, that [Python](https://www.python.org/) (version `3.5` or later) is installed.
+2. Install Ansible for your OS by [this](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible) instructions.
+3. Setting up inventory and Ansible config by [this](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html) guide.
+
+</details>
+
+<details>
+<summary>Helpful tools and plugins for working with Ansible</summary><br/>
+
+**VS Code addons:**
+
+- [vscode-ansible](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible) for code completion, syntax highlighting and linting of Ansible playbooks files
+- [vscode-nginx](https://marketplace.visualstudio.com/items?itemName=shanoor.vscode-nginx) for syntax highlighting of Nginx configs
+
+**VS Code config hints:**
+
+For better readability, please add two association to your `.vscode/settings.json`: for Ansible playbooks and `jinja2` templates.
+
+```json
+{
+  // ...
+  "files.associations": {
+    "*-domain.j*2": "NGINX", // for all jinja2 files ended with `domain` word
+    "*-playbook.y*ml": "ansible" // for YAML files ended with `playbook` word
+  }
+  // ...
+}
 ```
 
 </details>
 
 ## 📚 Usage
 
-1. Download script on your server by link at `Available scripts` section.
-
-> ☝️ **By the way:** we're using [`shrts.website`](https://github.com/truewebartisans/shrts.website) to shorting links for make it easier to copy `wget` command.
-
-2. Set establish execution rights to `script_name` (_if needs_):
-
-```console
-sudo chmod +x ./script_name.sh
-```
-
-3. Run `script_name` with (_or without_) params and options:
+1. Download [ZIP archive](archive/master.zip) or `git clone` this repository.
+2. Go to `useful-playbooks` folder.
+3. Select playbook (_see [`Available playbooks`](#-available-scripts) section_).
+4. Run playbook with (_or without_) arguments and extra vars:
 
 ```console
-sudo ./script_name.sh params --options
+ansible-playbook <playbook_name> -u <user> --extra-vars "host=<host>"
 ```
 
-## 🎯 Available scripts
+## 🎯 Available playbooks
 
 <br/>
 
-### `./new_vds.sh <domain> [options]`
+### `new_vds`
 
-#### Description
+Auto configures a fresh virtual server with the best practice for `Nginx` config, `Brotli` module and `UFW` rules.
 
-Auto configure a fresh virtual server for a **static website** or **SPA** (single-page application, like `React`, `Vue.js`, `Svelte` or else).
-
-#### Tested to work
-
-- Ubuntu `18.04+ LTS`, `16.04+ LTS`
-
-#### Download
+**Usage:**
 
 ```console
-wget -O new_vds.sh https://shrts.website/sd/new-vds
+ansible-playbook new_vds-playbook.yml -u <user> --extra-vars "host=<host>"
 ```
 
-#### Features
+**Extra vars:**
 
-- Update Ubuntu distributive
-- Update & Upgrade, auto remove packages
+- `<user>` (**required**/_optional_) username of remote user (for example, `root`)
+
+> 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
+
+- `<host>` (**required**) name of host you need from `/etc/ansible/hosts` file
+
+**Features:**
+
+- Update & Upgrade distributive
 - Configure [`UFW`](https://help.ubuntu.com/community/UFW) firewall with protection rules
 - Install [`Nginx`](https://nginx.org/) with [`Brotli`](https://github.com/google/brotli) module
-- Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153), [Brotli](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171) and [static website](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L209-L250)
-- HTTP/2 (443 port) by default
-- Get SSL certificates for domain by [`Certbot`](https://certbot.eff.org/) with automatically renew
-- Redirect from `www` to `non-www` domain and from `http` to `https`
-- A folder for website files is `/var/www/<domain>/html`
+- Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153) and [Brotli](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171)
 
-#### Params
+**Tested to work:**
 
-- `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
+- Ubuntu `18.04+ LTS`, `16.04+ LTS`
 
-> ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`. He will ask about it at the last step.
-
-#### Options
-
-- `--skip-update` (_optional_) skip `Update & Upgrade` initial part
-- `--force` (_optional_) force re-create NGINX config for your domain
+> 😉 Hey, if you have tested other versions and/or OS, please write [issue](issues/new) or send [PR](pulls).
 
 <br/>
 
-### `./create_ssl.sh <domain> [options]`
+### `create_ssl`
 
-#### Description
+Creates a new website folder (called as domain name) and SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org/)_) for it. Included the best practice for `Nginx` config and task for CRON to renew.
 
-Create a new SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org/)_) for your domain with the best practice `NGINX` config and task for CRON to renew.
-
-#### Tested to work
-
-- Ubuntu `18.04+ LTS`, `16.04+ LTS`
-- Debian `10 (Buster)`, `9 (Stretch)`
-
-#### Download
+**Usage:**
 
 ```console
-wget -O create_ssl.sh https://shrts.website/sd/create-ssl
+ansible-playbook -u <user> --extra-vars "host=<host> domain=<domain>"
 ```
 
-#### Features
+**Extra vars:**
+
+- `<user>` (**required**/_optional_) username of remote user (for example, `root`)
+
+> 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
+
+- `<host>` (**required**) name of host you need from `/etc/ansible/hosts` file
+- `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
+
+> ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`.
+
+**Features:**
 
 - Install [`Certbot`](https://certbot.eff.org/)
 - Create config by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/create_ssl.sh#L70-L111)
@@ -145,35 +155,31 @@ wget -O create_ssl.sh https://shrts.website/sd/create-ssl
 - Redirect from `www` to `non-www` domain and from `http` to `https`
 - A folder for website files is `/var/www/<domain>/html`
 
-#### Params
+**Tested to work:**
 
-- `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
+- Ubuntu `18.04+ LTS`, `16.04+ LTS`
+- Debian `10 (Buster)`, `9 (Stretch)`
 
-> ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`. He will ask about it at the last step.
-
-#### Options
-
-- `--skip-install` (_optional_) skip `Install Certbot` part
-- `--force` (_optional_) force re-create NGINX config for your domain
+> 😉 Hey, if you have tested other versions and/or OS, please write [issue](issues/new) or send [PR](pulls).
 
 <br/>
 
 ## 📺 Media
 
-A list of articles and video lessons, where `snippets-deploy` is used:
+A list of articles and video lessons, where `useful-playbooks` is used:
 
 - [✨ A practical guide to GitHub Actions: build & deploy a static 11ty website to remote virtual server after push](https://dev.to/koddr/automate-that-a-practical-guide-to-github-actions-build-deploy-a-static-11ty-website-to-remote-virtual-server-after-push-d19) by [Vic Shóstak](https://github.com/koddr) @ 01 Jun 2020
 
-> Make [pull requests](https://github.com/truewebartisans/snippets-deploy/pulls) with links to your articles and videos! We will post them right here.
+> Make [pull requests](pulls) with links to your articles and videos! We will post them right here.
 
 ## ⭐️ Project assistance
 
-If you want to say **thank you** or/and support active development `snippets-deploy`:
+If you want to say **thank you** or/and support active development `useful-playbooks`:
 
 1. Add a :octocat: GitHub Star to the project.
-2. Twit about project [on your Twitter](https://twitter.com/intent/tweet?text=Useful%20hand-crafted%20snippets%20for%20easily%20deploy%20your%20static%20website%20or%20webapp%20to%20absolutely%20fresh%20virtual%20server%20%28VDS%2FVPS%20or%20Droplet%29%20launched%20on%20GNU%2FLinux.%20https%3A%2F%2Fgithub.com%2Ftruewebartisans%2Fsnippets-deploy).
+2. Twit about project [on your Twitter](https://twitter.com/intent/tweet?text=Useful%20Ansible%20playbooks%20for%20easily%20deploy%20your%20static%20website%20or%20webapp%20to%20absolutely%20fresh%20virtual%20server%20%28VDS%2FVPS%20or%20Droplet%29%20launched%20on%20GNU%2FLinux.%20https%3A%2F%2Fgithub.com%2Ftruewebartisans%2Fuseful-playbooks).
 3. Donate some money to project author via PayPal: [@paypal.me/koddr](https://paypal.me/koddr?locale.x=en_EN).
-4. Join DigitalOcean at our [referral link](https://shrts.website/do/server) (your profit is **$100** and we get $25).
+4. Join DigitalOcean at our [referral link](https://shrts.website/do/server) (your profit is **\$100** and we get \$25).
 5. Buy awesome [domain name with **5%** discount](https://shrts.website/reg/domain) at REG.COM.
 
 Thanks for your support! 😘 Together, we make this project better every day.

@@ -1,0 +1,43 @@
+---
+- hosts: {{ host }}
+  gather_facts: yes
+
+  tasks:
+    - name: Add software-properties-common package
+      apt: pkg=software-properties-common state=latest
+
+    - name: Add PPA repositories
+      apt_repository: repo={{ item.repo }} state={{ item.state }}
+      with_items:
+        - { repo: "ppa:certbot/certbot" }
+
+    - name: Update dist
+      apt: update_cache=yes
+
+    - name: Install Certbot
+      apt: pkg="{{ item }}" state=latest update_cache=yes
+      with_items:
+        - python3-certbot-nginx
+
+    - name: Create & set chmod USER:USER to websites folders
+      file: path={{ item.path }} state=directory owner={{ ansible_user }} group={{ ansible_user }} mode=0644
+      with_items:
+        - { path: "/var/www" }
+        - { path: "/var/www/{{ domain }}/html" }
+
+    - name: Add {{ domain }}.conf to /etc/nginx/sites-available
+      template:
+        src: ./templates/http-domain.j2
+        dest: /etc/nginx/sites-available/{{ domain }}.conf
+
+    - name: Create symbolic link for {{ domain }}.conf to /etc/nginx/sites-enabled/
+      file:
+        src: /etc/nginx/sites-available/{{ domain }}.conf
+        dest: /etc/nginx/sites-enabled/
+        state: link
+      notify:
+        - restart_nginx
+
+  handlers:
+    - name: restart_nginx
+      service: name=nginx state=restarted

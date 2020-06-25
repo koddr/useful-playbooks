@@ -1,0 +1,45 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name {{ domain }} www.{{ domain }};
+
+    return 301 https://{{ domain }}$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name www.{{ domain }};
+
+    ssl_certificate /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ domain }}/chain.pem;
+
+    return 301 https://{{ domain }}$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name {{ domain }};
+
+    root /var/www/{{ domain }}/html;
+    index index.html;
+
+    ssl_certificate /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ domain }}/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/{{ domain }}/chain.pem;
+    
+    location ~* ^.+\.(rss|atom|xml|jpg|jpeg|gif|png|svg|ico|rtf|js|css|woff|woff2|ttf|otf)$ {
+        expires 30d;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    etag on;
+}
