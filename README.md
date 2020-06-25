@@ -6,8 +6,8 @@ Useful _[Ansible](https://github.com/ansible/ansible) playbooks_ for **easily** 
 
 🔔 Playbooks short list:
 
-- [`new_vds`](#new_vds) for auto configure a fresh virtual server
-- [`create_ssl`](#create_ssl) for create a new website with SSL certificate
+- [`new_vds`](https://github.com/truewebartisans/useful-playbooks#new_vds) for auto configure a fresh virtual server
+- [`create_ssl`](https://github.com/truewebartisans/useful-playbooks#create_ssl) for create a new website with SSL certificate
 
 ## 💡 Before we begin
 
@@ -48,7 +48,7 @@ Ansible is a radically simple IT automation system. It handles configuration man
 
 1. Be sure, that [Python](https://www.python.org/) (version `3.5` or later) is installed.
 2. Install Ansible for your OS by [this](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible) instructions.
-3. Setting up inventory and Ansible config by [this](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html) guide.
+3. Setting up inventory by [this](https://docs.ansible.com/ansible/latest/user_guide/intro_getting_started.html) guide.
 
 </details>
 
@@ -68,7 +68,7 @@ For better readability, please add two association to your `.vscode/settings.jso
 {
   // ...
   "files.associations": {
-    "*-domain.j*2": "NGINX", // for all jinja2 files ended with `domain` word
+    "*-domain.j*2": "NGINX",     // for all jinja2 files ended with `domain` word
     "*-playbook.y*ml": "ansible" // for YAML files ended with `playbook` word
   }
   // ...
@@ -79,9 +79,9 @@ For better readability, please add two association to your `.vscode/settings.jso
 
 ## 📚 Usage
 
-1. Download [ZIP archive](archive/master.zip) or `git clone` this repository.
+1. Download [ZIP archive](https://github.com/truewebartisans/useful-playbooks/archive/master.zip) or `git clone` this repository.
 2. Go to `useful-playbooks` folder.
-3. Select playbook (_see [`Available playbooks`](#-available-scripts) section_).
+3. Select playbook (_see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-scripts) section_).
 4. Run playbook with (_or without_) arguments and extra vars:
 
 ```console
@@ -94,7 +94,7 @@ ansible-playbook <playbook_name> -u <user> --extra-vars "host=<host>"
 
 ### `new_vds`
 
-Auto configures a fresh virtual server with the best practice for `Nginx` config, `Brotli` module and `UFW` rules.
+Configures a fresh virtual server with the best practice for `Nginx` config, `Brotli` module and `UFW` firewall rules.
 
 **Usage:**
 
@@ -113,15 +113,23 @@ ansible-playbook new_vds-playbook.yml -u <user> --extra-vars "host=<host>"
 **Features:**
 
 - Update & Upgrade distributive
-- Configure [`UFW`](https://help.ubuntu.com/community/UFW) firewall with protection rules
-- Install [`Nginx`](https://nginx.org/) with [`Brotli`](https://github.com/google/brotli) module
-- Create configs by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L73-L153) and [Brotli](https://github.com/truewebartisans/snippets-deploy/blob/master/new_vds.sh#L161-L171)
+- Added repository:
+  - `ppa:hda-me/nginx-stable`
+- Installed latest versions: 
+  - [`Nginx`](https://nginx.org/)
+  - [`Brotli`](https://github.com/google/brotli)
+  - Brotli module for Nginx
+  - [`UFW`](https://help.ubuntu.com/community/UFW) firewall
+- Configured by the best practice: 
+  - Nginx
+  - Brotli
+  - UFW rules
 
 **Tested to work:**
 
 - Ubuntu `18.04+ LTS`, `16.04+ LTS`
 
-> 😉 Hey, if you have tested other versions and/or OS, please write [issue](issues/new) or send [PR](pulls).
+> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
 
 <br/>
 
@@ -132,7 +140,7 @@ Creates a new website folder (called as domain name) and SSL certificate (_thank
 **Usage:**
 
 ```console
-ansible-playbook -u <user> --extra-vars "host=<host> domain=<domain>"
+ansible-playbook create_ssl-playbook.yml -u <user> --extra-vars "host=<host> domain=<domain>"
 ```
 
 **Extra vars:**
@@ -148,19 +156,25 @@ ansible-playbook -u <user> --extra-vars "host=<host> domain=<domain>"
 
 **Features:**
 
-- Install [`Certbot`](https://certbot.eff.org/)
-- Create config by best practice for [Nginx](https://github.com/truewebartisans/snippets-deploy/blob/master/create_ssl.sh#L70-L111)
-- HTTP/2 (443 port) by default
-- Get SSL certificates for domain with automatically renew
-- Redirect from `www` to `non-www` domain and from `http` to `https`
-- A folder for website files is `/var/www/<domain>/html`
+- Added repository:
+  - `ppa:certbot/certbot`
+- Installed latest versions: 
+  - [`Certbot`](https://certbot.eff.org/) for Nginx
+- Configured by the best practice: 
+  - Nginx config for your domain
+  - SSL certificate for domain 
+  - CRON task for automatically renew SSL
+  - HTTP/2 (443 port)
+  - Redirect from `www` to `non-www` domain 
+  - Redirect from `http` to `https`
+  - A folder for website files (`/var/www/<domain>/html`)
 
 **Tested to work:**
 
 - Ubuntu `18.04+ LTS`, `16.04+ LTS`
 - Debian `10 (Buster)`, `9 (Stretch)`
 
-> 😉 Hey, if you have tested other versions and/or OS, please write [issue](issues/new) or send [PR](pulls).
+> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
 
 <br/>
 
@@ -177,7 +191,7 @@ A list of articles and video lessons, where `useful-playbooks` is used:
 If you want to say **thank you** or/and support active development `useful-playbooks`:
 
 1. Add a :octocat: GitHub Star to the project.
-2. Twit about project [on your Twitter](https://twitter.com/intent/tweet?text=Useful%20Ansible%20playbooks%20for%20easily%20deploy%20your%20static%20website%20or%20webapp%20to%20absolutely%20fresh%20virtual%20server%20%28VDS%2FVPS%20or%20Droplet%29%20launched%20on%20GNU%2FLinux.%20https%3A%2F%2Fgithub.com%2Ftruewebartisans%2Fuseful-playbooks).
+2. Twit about project [on your Twitter](https://twitter.com/intent/tweet?text=Useful%20Ansible%20playbooks%20for%20easily%20deploy%20your%20website%20or%20webapp%20to%20absolutely%20fresh%20virtual%20server%20%28VDS%2FVPS%20or%20Droplet%29%20launched%20on%20GNU%2FLinux%20https%3A%2F%2Fgithub.com%2Ftruewebartisans%2Fuseful-playbooks).
 3. Donate some money to project author via PayPal: [@paypal.me/koddr](https://paypal.me/koddr?locale.x=en_EN).
 4. Join DigitalOcean at our [referral link](https://shrts.website/do/server) (your profit is **\$100** and we get \$25).
 5. Buy awesome [domain name with **5%** discount](https://shrts.website/reg/domain) at REG.COM.
