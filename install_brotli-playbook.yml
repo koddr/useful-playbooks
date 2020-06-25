@@ -1,0 +1,81 @@
+---
+- hosts: "{{ host }}"
+  gather_facts: yes
+
+  tasks:
+
+    - name: Install needed packages
+      apt: 
+        pkg: "{{ item }}"
+        state: latest
+      with_items:
+        - git
+        - gcc
+        - cmake
+        - libpcre3
+        - libpcre3-dev
+        - zlib1g
+        - zlib1g-dev
+        - openssl
+        - libssl-dev
+
+    - name: Download and unarchive Nginx source code of version {{ nginx_version }}
+      unarchive:
+        src: https://nginx.org/download/nginx-{{ nginx_version }}.tar.gz
+        dest: ~/
+        remote_src: yes
+
+    - name: Git clone Brotli module (google/ngx_brotli)
+      git:
+        repo: https://github.com/google/ngx_brotli.git
+        dest: ~/ngx_brotli
+
+    - name: Configure Brotli module
+      command:
+        chdir: ~/nginx-{{ nginx_version }}
+        cmd: ./configure --with-compat --add-dynamic-module=../ngx_brotli
+    
+    - name: Make Brotli module (Dynamically loaded)
+      make:
+        chdir: ~/nginx-{{ nginx_version }}
+        target: modules
+
+    - name: Copy compiled Brotli module to /usr/share/nginx/modules
+      copy: 
+        remote_src: yes
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0644
+      with_items:
+        - { src: "~/nginx-{{ nginx_version }}/objs/ngx_http_brotli_filter_module.so", dest: "/usr/share/nginx/modules" }
+        - { src: "~/nginx-{{ nginx_version }}/objs/ngx_http_brotli_static_module.so", dest: "/usr/share/nginx/modules" }
+
+    - name: Copy Brotli config
+      copy: 
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0644
+      with_items:
+        - { src: "./configs/nginx.conf", dest: "/etc/nginx/nginx.conf" }
+        - { src: "./configs/brotli.conf", dest: "/etc/nginx/conf.d/brotli.conf" }
+      notify:
+        - restart_nginx
+
+    - name: Remove template directories
+      file:
+        state: absent
+        path: "{{ item.path }}"
+      with_items:
+        - { path: "~/ngx_brotli" }
+        - { path: "~/nginx-{{ nginx_version }}" }
+
+  handlers:
+
+    - name: restart_nginx
+      service:
+        name: nginx
+        state: restarted

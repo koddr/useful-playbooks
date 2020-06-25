@@ -1,50 +1,71 @@
 ---
-- hosts: {{ host }}
+- hosts: "{{ host }}"
   gather_facts: yes
 
   tasks:
+
     - name: Add software-properties-common package
-      apt: pkg=software-properties-common state=latest
+      apt:
+        pkg: software-properties-common
+        state: latest
 
     - name: Add PPA repositories
-      apt_repository: repo={{ item.repo }} state={{ item.state }}
+      apt_repository:
+        repo: "{{ item.repo }}"
       with_items:
         - { repo: "ppa:hda-me/nginx-stable" }
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
 
-    - name: Update dist
-      apt: update_cache=yes
+    - name: Update packages
+      apt:
+        update_cache: yes
 
     - name: Upgrade dist
-      apt: upgrade=dist
+      apt:
+        upgrade: dist
 
-    - name: Install Nginx, Brotli (with Nginx module), UFW
-      apt: pkg="{{ item }}" state=latest
+    - name: Install Nginx, UFW
+      apt:
+        pkg: "{{ item }}"
+        state: latest
       with_items:
         - nginx
-        - brotli
-        - nginx-module-brotli
         - ufw
 
     - name: Create & set chmod USER:USER to /etc/nginx/conf.d
-      file: path={{ item.path }} state=directory owner={{ ansible_user }} group={{ ansible_user }} mode=0644
+      file:
+        state: directory
+        path: "{{ item.path }}"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0644
       with_items:
         - { path: "/etc/nginx/conf.d" }
 
-    - name: Copy configs UFW, Nginx, Brotli
-      copy: src={{ item.src }} dest={{ item.dest }} owner={{ ansible_user }} group={{ ansible_user }} mode=0644
+    - name: Copy configs UFW, Nginx
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0644
       with_items:
         - { src: "./configs/ufw-nginx.ini", dest: "/etc/ufw/applications.d/nginx.ini" }
         - { src: "./configs/nginx.conf", dest: "/etc/nginx/nginx.conf" }
-        - { src: "./configs/brotli.conf", dest: "/etc/nginx/conf.d/brotli.conf" }
 
     - name: Allow OpenSSH, Nginx (http + https)
-      ufw: name={{ item.name }} rule={{ item.rule }}
+      ufw:
+        name: "{{ item.name }}"
+        rule: "{{ item.rule }}"
       with_items:
         - { name: "OpenSSH", rule: "allow" }
         - { name: "Nginx Full", rule: "allow" }
 
     - name: Enable Nginx during boot
-      service: name=nginx state=started enabled=yes
+      service:
+        name: nginx
+        state: started
+        enabled: yes
       notify:
         - restart_nginx
 
@@ -54,8 +75,12 @@
         size: 2048
 
     - name: Remove unused dependency packages
-      apt: autoremove=yes
+      apt:
+        autoremove: yes
 
   handlers:
+  
     - name: restart_nginx
-      service: name=nginx state=restarted
+      service:
+        name: nginx
+        state: restarted

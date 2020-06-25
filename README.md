@@ -7,6 +7,7 @@ Useful [Ansible](https://github.com/ansible/ansible) playbooks for **easily** de
 🔔 Playbooks short list:
 
 - [`new_vds`](https://github.com/truewebartisans/useful-playbooks#new_vds) for auto configure a fresh virtual server
+- [`install_brotli`](https://github.com/truewebartisans/useful-playbooks#install_brotli) for install Brotli module to Nginx
 - [`create_ssl`](https://github.com/truewebartisans/useful-playbooks#create_ssl) for create a new website with SSL certificate
 
 ## 💡 Before we begin
@@ -68,7 +69,7 @@ For better readability, please add two association to your `.vscode/settings.jso
 {
   // ...
   "files.associations": {
-    "*-domain.j*2": "NGINX",     // for all jinja2 files ended with `domain` word
+    "*-domain.j*2": "NGINX", // for all jinja2 files ended with `domain` word
     "*-playbook.y*ml": "ansible" // for YAML files ended with `playbook` word
   }
   // ...
@@ -80,7 +81,7 @@ For better readability, please add two association to your `.vscode/settings.jso
 ## 📚 Usage
 
 1. Download [ZIP archive](https://github.com/truewebartisans/useful-playbooks/archive/master.zip) or `git clone` this repository
-2. Go to the downloaded/clonned folder
+2. Go to the downloaded/cloned folder
 3. Select playbook (see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-playbooks) section)
 4. Run `<playbook_name>` with (_or without_) arguments and extra vars:
 
@@ -94,12 +95,15 @@ ansible-playbook <playbook_name>-playbook.yml [args] [extra vars...]
 
 ### `new_vds`
 
-Configures a fresh virtual server with the best practice for `Nginx` config, `Brotli` module and `UFW` firewall rules.
+Configures a fresh virtual server with the best practice for `Nginx` config and `UFW` firewall rules.
 
 **Usage:**
 
 ```console
-ansible-playbook new_vds-playbook.yml -u <user> --extra-vars "host=<host>"
+ansible-playbook \
+                  new_vds-playbook.yml \
+                  --user <user> \
+                  --extra-vars "host=<host>"
 ```
 
 **Extra vars:**
@@ -114,20 +118,56 @@ ansible-playbook new_vds-playbook.yml -u <user> --extra-vars "host=<host>"
 
 - Update & Upgrade distributive
 - Added repository:
-  - `ppa:hda-me/nginx-stable`
-- Installed latest versions: 
+  - `ppa:hda-me/nginx-stable` (skipped for Ubuntu `20.04 LTS`)
+- Installed latest versions:
   - [`Nginx`](https://nginx.org/)
-  - [`Brotli`](https://github.com/google/brotli)
-  - Brotli module for Nginx
   - [`UFW`](https://help.ubuntu.com/community/UFW) firewall
-- Configured by the best practice: 
+- Configured by the best practice:
   - Nginx
-  - Brotli
   - UFW rules
 
 **Tested to work:**
 
-- Ubuntu `18.04+ LTS`, `16.04+ LTS`
+- Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
+
+> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
+
+<br/>
+
+### `install_brotli`
+
+Installs Brotli module for Nginx.
+
+**Usage:**
+
+```console
+ansible-playbook \
+                  install_brotli-playbook.yml \
+                  --user <user> \
+                  --extra-vars "host=<host> nginx_version=<nginx_version>"
+```
+
+**Extra vars:**
+
+- `<user>` (**required**/_optional_) username of remote user (for example, `root`)
+
+> 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
+
+- `<host>` (**required**) name of host you need from `/etc/ansible/hosts` file
+- `<nginx_version>` (**required**) current Nginx version (on semver format) into your remote server (check it by `nginx -v`)
+
+**Features:**
+
+- Installed latest versions:
+  - [`Brotli`](https://github.com/google/brotli)
+  - [`Brotli module`](https://github.com/google/ngx_brotli) for Nginx
+- Configured by the best practice:
+  - Nginx
+  - Brotli
+
+**Tested to work:**
+
+- Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
 
 > 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
 
@@ -140,7 +180,10 @@ Creates a new website folder (called as domain name) and SSL certificate (_thank
 **Usage:**
 
 ```console
-ansible-playbook create_ssl-playbook.yml -u <user> --extra-vars "host=<host> domain=<domain>"
+ansible-playbook \
+                  create_ssl-playbook.yml \
+                  --user <user> \
+                  --extra-vars "host=<host> domain=<domain>"
 ```
 
 **Extra vars:**
@@ -157,21 +200,21 @@ ansible-playbook create_ssl-playbook.yml -u <user> --extra-vars "host=<host> dom
 **Features:**
 
 - Added repository:
-  - `ppa:certbot/certbot`
-- Installed latest versions: 
+  - `ppa:certbot/certbot` (skipped for Ubuntu `20.04 LTS`)
+- Installed latest versions:
   - [`Certbot`](https://certbot.eff.org/) for Nginx
-- Configured by the best practice: 
+- Configured by the best practice:
   - Nginx config for your domain
-  - SSL certificate for domain 
+  - SSL certificate for domain
   - CRON task for automatically renew SSL
   - HTTP/2 (443 port)
-  - Redirect from `www` to `non-www` domain 
+  - Redirect from `www` to `non-www` domain
   - Redirect from `http` to `https`
-  - A folder for website files (`/var/www/<domain>/html`)
+  - Folder for website files (`/var/www/<domain>/html`)
 
 **Tested to work:**
 
-- Ubuntu `18.04+ LTS`, `16.04+ LTS`
+- Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
 - Debian `10 (Buster)`, `9 (Stretch)`
 
 > 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
