@@ -8,12 +8,14 @@
       apt:
         pkg: software-properties-common
         state: latest
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
 
     - name: Add PPA repositories
       apt_repository:
         repo: "{{ item.repo }}"
       with_items:
         - { repo: "ppa:certbot/certbot" }
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
 
     - name: Update dist
       apt: 
@@ -43,11 +45,14 @@
         src: ./templates/http-domain.j2
         dest: /etc/nginx/sites-available/{{ domain }}.conf
 
-    - name: Create symbolic link for {{ domain }}.conf to /etc/nginx/sites-enabled/
+    - name: Create symbolic link for {{ domain }}.conf to /etc/nginx/sites-enabled
       file:
         state: link
         src: /etc/nginx/sites-available/{{ domain }}.conf
-        dest: /etc/nginx/sites-enabled/
+        dest: /etc/nginx/sites-enabled/{{ domain }}.conf
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0644
       notify:
         - restart_nginx
 

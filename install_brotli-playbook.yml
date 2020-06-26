@@ -52,6 +52,15 @@
         - { src: "~/nginx-{{ nginx_version }}/objs/ngx_http_brotli_filter_module.so", dest: "/usr/share/nginx/modules" }
         - { src: "~/nginx-{{ nginx_version }}/objs/ngx_http_brotli_static_module.so", dest: "/usr/share/nginx/modules" }
 
+    - name: Add Brotli module to start of Nginx config
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        insertbefore: BOF
+        line: "{{ item.line }}"
+      with_items:
+        - { line: 'load_module "modules/ngx_http_brotli_filter_module.so";' }
+        - { line: 'load_module "modules/ngx_http_brotli_static_module.so";' }
+
     - name: Copy Brotli config
       copy: 
         src: "{{ item.src }}"
@@ -60,7 +69,6 @@
         group: "{{ ansible_user }}"
         mode: 0644
       with_items:
-        - { src: "./configs/nginx.conf", dest: "/etc/nginx/nginx.conf" }
         - { src: "./configs/brotli.conf", dest: "/etc/nginx/conf.d/brotli.conf" }
       notify:
         - restart_nginx

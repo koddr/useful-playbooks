@@ -76,7 +76,7 @@ Ansible is a radically simple IT automation system. It handles configuration man
 
 **VS Code config hints:**
 
-For better readability, please add two association to your `.vscode/settings.json`: 
+For better readability, please add two association to your `.vscode/settings.json`:
 
 1. For `Ansible` playbooks
 2. For `jinja2` templates (which uses for `Nginx` configs)
@@ -164,11 +164,12 @@ ansible-playbook \
 
 **Features:**
 
+- Added lines to files:
+  - `load_module` lines with Brotli module to the start of Nginx config (`/etc/nginx/nginx.conf`)
 - Installed latest versions:
   - [`Brotli`](https://github.com/google/brotli)
   - [`Brotli module`](https://github.com/google/ngx_brotli) for Nginx
 - Configured by the best practice:
-  - Nginx
   - Brotli
 
 **Tested to work:**

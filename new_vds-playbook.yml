@@ -8,6 +8,7 @@
       apt:
         pkg: software-properties-common
         state: latest
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
 
     - name: Add PPA repositories
       apt_repository:
