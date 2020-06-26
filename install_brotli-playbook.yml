@@ -4,6 +4,14 @@
 
   tasks:
 
+    - name: Gather the apt package facts
+      package_facts:
+        manager: auto
+
+    - name: Get Nginx version and set variable
+      set_fact:
+        nginx_version: "{{ ansible_facts.packages['nginx'][0].version | regex_search('^[0-9.]*') }}"
+
     - name: Install needed packages
       apt: 
         pkg: "{{ item }}"

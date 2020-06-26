@@ -144,13 +144,15 @@ ansible-playbook \
 
 Installs `Brotli` module for your current `Nginx` version.
 
+> ☝️ Please note, that playbook uses the current version of Nginx installed on your remote server. Please, check if it's installed before running!
+
 **Usage:**
 
 ```bash
 ansible-playbook \
                   install_brotli-playbook.yml \
                   --user <user> \
-                  --extra-vars "host=<host> nginx_version=<nginx_version>"
+                  --extra-vars "host=<host>"
 ```
 
 **Extra vars:**
@@ -160,7 +162,6 @@ ansible-playbook \
 > 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
 - `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
-- `<nginx_version>` (**required**) current version of Nginx (in [SemVer](https://semver.org/) format) on your remote server (check it by `nginx -v` command)
 
 **Features:**
 
