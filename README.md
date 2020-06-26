@@ -235,7 +235,7 @@ A list of articles and video lessons, where `useful-playbooks` is used:
 
 - [✨ A practical guide to GitHub Actions: build & deploy a static 11ty website to remote virtual server after push](https://dev.to/koddr/automate-that-a-practical-guide-to-github-actions-build-deploy-a-static-11ty-website-to-remote-virtual-server-after-push-d19) by [Vic Shóstak](https://github.com/koddr) @ 01 Jun 2020
 
-> Make [pull requests](pulls) with links to your articles and videos! We will post them right here.
+> Make [pull requests](https://github.com/truewebartisans/useful-playbooks/pulls) with links to your articles and videos! We will post them right here.
 
 ## ⭐️ Project assistance
 
