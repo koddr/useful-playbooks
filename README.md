@@ -144,7 +144,7 @@ ansible-playbook \
 
 Installs `Brotli` module for your current `Nginx` version.
 
-> ☝️ Please note, that playbook uses the current version of Nginx installed on your remote server. Please, check if it's installed before running!
+> ☝️ Please note, that playbook uses the current version of Nginx installed on your remote server. Check, if it's installed before running!
 
 **Usage:**
 
