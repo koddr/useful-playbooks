@@ -14,12 +14,14 @@ Useful [Ansible](https://github.com/ansible/ansible) playbooks for **easily** de
 
 1. Download [ZIP archive](https://github.com/truewebartisans/useful-playbooks/archive/master.zip) or `git clone` this repository.
 2. Go to the downloaded or cloned folder.
-3. Select playbook (see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-playbooks) section).
+3. Select a playbook (see [`Available playbooks`](https://github.com/truewebartisans/useful-playbooks#-available-playbooks) section).
 4. Run `<playbook_name>` with (_or without_) arguments and extra vars:
 
 ```console
 ansible-playbook <playbook_name>-playbook.yml [args] [extra vars...]
 ```
+
+5. Enjoy! 😎
 
 ## 💡 Required information about Ansible
 
@@ -157,7 +159,7 @@ ansible-playbook \
 > 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
 - `<host>` (**required**) name of host you need from `/etc/ansible/hosts` file
-- `<nginx_version>` (**required**) current Nginx version (on semver format) into your remote server (check it by `nginx -v`)
+- `<nginx_version>` (**required**) current Nginx version (on semver format) into your remote server
 
 **Features:**
 
