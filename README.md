@@ -85,6 +85,7 @@ For better readability, please add two association to your `.vscode/settings.jso
 {
   // ...
   "files.associations": {
+    // ...
     "*-domain.j*2": "NGINX", // for all jinja2 files ended with `domain` word
     "*-playbook.y*ml": "ansible" // for YAML files ended with `playbook` word
   }
@@ -113,11 +114,11 @@ ansible-playbook \
 
 **Extra vars:**
 
-- `<user>` (**required**/_optional_) username of remote user (for example, `root`)
+- `<user>` (**required**/_optional_) remote user's username (for example, `root`)
 
 > 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
-- `<host>` (**required**) name of host you need from `/etc/ansible/hosts` file
+- `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
 
 **Features:**
 
@@ -154,12 +155,12 @@ ansible-playbook \
 
 **Extra vars:**
 
-- `<user>` (**required**/_optional_) username of remote user (for example, `root`)
+- `<user>` (**required**/_optional_) remote user's username (for example, `root`)
 
 > 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
-- `<host>` (**required**) name of host you need from `/etc/ansible/hosts` file
-- `<nginx_version>` (**required**) current Nginx version (on semver format) into your remote server
+- `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
+- `<nginx_version>` (**required**) current version of Nginx (in [SemVer](https://semver.org/) format) on your remote server (check it by `nginx -v` command)
 
 **Features:**
 
@@ -193,12 +194,12 @@ ansible-playbook \
 
 **Extra vars:**
 
-- `<user>` (**required**/_optional_) username of remote user (for example, `root`)
+- `<user>` (**required**/_optional_) is the remote user's username (for example, `root`)
 
 > 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
-- `<host>` (**required**) name of host you need from `/etc/ansible/hosts` file
-- `<domain>` (**required**) your domain without `www` part (_for example, `website.com`_)
+- `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
+- `<domain>` (**required**) domain name without `www` part (for example, `website.com`)
 
 > ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`.
 
