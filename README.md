@@ -168,10 +168,10 @@ ansible-playbook \
 - Added lines to files:
   - `load_module` lines with Brotli module to the start of Nginx config (`/etc/nginx/nginx.conf`)
 - Installed latest versions:
-  - [`Brotli`](https://github.com/google/brotli)
   - [`Brotli module`](https://github.com/google/ngx_brotli) for Nginx
+  - Packages to `./configure` and run `make` for Brotli module (`git`, `gcc`, `cmake`, `libpcre3`, `libpcre3-dev`, `zlib1g`, `zlib1g-dev`, `openssl`, `libssl-dev`)
 - Configured by the best practice:
-  - Brotli
+  - Brotli config
 
 **Tested to work:**
 
