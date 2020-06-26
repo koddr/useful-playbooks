@@ -104,7 +104,7 @@ Configures a fresh virtual server with the best practice for `Nginx` config and 
 
 **Usage:**
 
-```console
+```bash
 ansible-playbook \
                   new_vds-playbook.yml \
                   --user <user> \
@@ -145,7 +145,7 @@ Installs `Brotli` module for your current `Nginx` version.
 
 **Usage:**
 
-```console
+```bash
 ansible-playbook \
                   install_brotli-playbook.yml \
                   --user <user> \
@@ -184,7 +184,7 @@ Creates a new website folder (called as domain name) and SSL certificate (_thank
 
 **Usage:**
 
-```console
+```bash
 ansible-playbook \
                   create_ssl-playbook.yml \
                   --user <user> \
