@@ -194,7 +194,7 @@ ansible-playbook \
 
 **Extra vars:**
 
-- `<user>` (**required**/_optional_) is the remote user's username (for example, `root`)
+- `<user>` (**required**/_optional_) remote user's username (for example, `root`)
 
 > 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
