@@ -20,7 +20,7 @@
         - certbot
         - python3-certbot-nginx
 
-    - name: Create & set chown USER:USER to /var/www/{{ domain }}/html
+    - name: Create /var/www/{{ domain }}/html folder, set chown USER:USER
       file: 
         state: directory
         path: /var/www/{{ domain }}/html
@@ -56,15 +56,6 @@
       template:
         src: ./templates/https-domain.j2
         dest: /etc/nginx/sites-available/{{ domain }}.conf
-
-    - name: Create symbolic link for HTTPS version of {{ domain }}.conf to /etc/nginx/sites-enabled
-      file:
-        state: link
-        src: /etc/nginx/sites-available/{{ domain }}.conf
-        dest: /etc/nginx/sites-enabled/{{ domain }}.conf
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        mode: 0700
       notify:
         - reload_nginx
 

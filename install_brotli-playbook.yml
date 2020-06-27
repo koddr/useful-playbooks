@@ -71,17 +71,15 @@
 
     - name: Copy Brotli config
       copy: 
-        src: "{{ item.src }}"
-        dest: "{{ item.dest }}"
+        src: ./configs/brotli.conf
+        dest: /etc/nginx/conf.d/brotli.conf
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
         mode: 0644
-      with_items:
-        - { src: "./configs/brotli.conf", dest: "/etc/nginx/conf.d/brotli.conf" }
       notify:
         - reload_nginx
 
-    - name: Remove template directories
+    - name: Delete unnecessary directories
       file:
         state: absent
         path: "{{ item.path }}"

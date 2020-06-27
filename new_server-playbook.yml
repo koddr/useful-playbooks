@@ -23,7 +23,7 @@
         - nginx
         - ufw
 
-    - name: Create & set chown USER:USER to /etc/nginx/conf.d
+    - name: Create /etc/nginx/conf.d folder, set chown USER:USER
       file:
         state: directory
         path: "{{ item.path }}"
@@ -65,7 +65,7 @@
       notify:
         - restart_nginx
 
-    - name: Create & set chown USER:USER to /var/www
+    - name: Create /var/www folder, set chown USER:USER
       file: 
         state: directory
         path: /var/www
