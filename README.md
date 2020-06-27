@@ -21,7 +21,7 @@ ansible-playbook <playbook_name>-playbook.yml [args] [extra vars...]
 
 - 📖 [`new_server`](https://github.com/truewebartisans/useful-playbooks/blob/master/docs/new_server.md) for auto configure a fresh remote virtual server
 - 📖 [`install_brotli`](https://github.com/truewebartisans/useful-playbooks/blob/master/docs/install_brotli.md) for install Brotli module to Nginx
-- 📖 [`create_ssl`](https://github.com/truewebartisans/useful-playbooks/blob/master/docs/create_ssl.md) for create a new website with SSL certificate from Let's Encrypt and auto renew
+- 📖 [`create_ssl`](https://github.com/truewebartisans/useful-playbooks/blob/master/docs/create_ssl.md) for create a new website with SSL certificate from Let's Encrypt
 
 ## 💡 Required information about Ansible
 
@@ -95,18 +95,18 @@ For better readability, please add two association to your `.vscode/settings.jso
 
 **Beautify Ansible outputs:**
 
-Since Ansible `v2.5.x` you can enable beautify output by [callback_plugins](https://docs.ansible.com/ansible/2.5/plugins/callback.html) and auto convert this _one line_ output:
+Since Ansible `v2.5.x`, you can enable beautify output by [callback_plugins](https://docs.ansible.com/ansible/2.5/plugins/callback.html) and auto convert this _one line_ output:
 
 ```console
 TASK [Get SSL for domain] *******************************
-fatal: [174.138.47.165]: FAILED! => {"changed": true, "cmd": ["certbot", "--nginx", "certonly", "--agree-tos", "-m", "test@example.com", "-d", "example.com", "-d", "www.example.com", "--dry-run"], "delta": "0:00:05.308254", "end": "2020-06-27 10:29:26.506768", "msg": "non-zero return code", "rc": 1, "start": "2020-06-27 10:29:21.198514", "stderr": "..." ...
+fatal: [***]: FAILED! => {"changed": true, "cmd": ["certbot", "--nginx", "certonly", "--agree-tos", "-m", "test@example.com", "-d", "example.com", "-d", "www.example.com", "--dry-run"], "delta": "***", "end": "***", "msg": "non-zero return code", "rc": 1, "start": "***", "stderr": "..." ...
 ```
 
 To awesome structured, like this:
 
 ```console
 TASK [Get SSL for domain] *******************************
-fatal: [174.138.47.165]: FAILED! => changed=true
+fatal: [***]: FAILED! => changed=true
   cmd:
   - certbot
   - --nginx
@@ -119,16 +119,16 @@ fatal: [174.138.47.165]: FAILED! => changed=true
   - -d
   - www.example.com
   - --dry-run
-  delta: '0:00:05.231053'
-  end: '2020-06-27 10:31:26.398114'
+  delta: '***'
+  end: '***'
   msg: non-zero return code
   rc: 1
-  start: '2020-06-27 10:31:21.167061'
+  start: '***'
   stderr: ...
   ...
 ```
 
-To use it, please, edit your `ansible.cfg` file (_either global, in `/etc/ansible/ansible.cfg`, or a local one in your playbook/project_), and add the following lines under the `[defaults]` section:
+To use it, please, edit the `[defaults]` section in your Ansible config file (`/etc/ansible/ansible.cfg`):
 
 ```ini
 [defaults]
