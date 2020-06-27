@@ -37,6 +37,6 @@ ansible-playbook \
 
 > 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
 
-<hr/>
+<br/>
 
 [← Back to List](https://github.com/truewebartisans/useful-playbooks#-available-playbooks)
