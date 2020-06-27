@@ -95,7 +95,7 @@ For better readability, please add two association to your `.vscode/settings.jso
 
 **Beautify Ansible outputs:**
 
-Since Ansible `v2.5.x` you can enable beautify output by [callback_plugins](https://docs.ansible.com/ansible/2.5/plugins/callback.html) and auto convert this _one line_ output:
+Since Ansible `v2.5.x`, you can enable beautify output by [callback_plugins](https://docs.ansible.com/ansible/2.5/plugins/callback.html) and auto convert this _one line_ output:
 
 ```console
 TASK [Get SSL for domain] *******************************
