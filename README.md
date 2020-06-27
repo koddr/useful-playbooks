@@ -102,7 +102,7 @@ A list of articles and video lessons, where `useful-playbooks` is used:
 - [⚙️ How to install Brotli module for Nginx on Ubuntu 20.04+](https://dev.to/koddr/how-to-install-brotli-module-for-nginx-on-ubuntu-20-04-2ocp) @ 27 Jun 2020
 - [✨ A practical guide to GitHub Actions: build & deploy a static 11ty website to remote virtual server after push](https://dev.to/koddr/automate-that-a-practical-guide-to-github-actions-build-deploy-a-static-11ty-website-to-remote-virtual-server-after-push-d19) @ 01 Jun 2020
 
-> Make [pull requests](https://github.com/truewebartisans/useful-playbooks/pulls) with links to your articles and videos! We will post them right here.
+> Make [pull request](https://github.com/truewebartisans/useful-playbooks/pulls) with links to your articles and videos! We will post them right here.
 
 ## ⭐️ Project assistance
 

@@ -42,7 +42,15 @@ ansible-playbook \
 - Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
 - Debian `10 (Buster)`, `9 (Stretch)`
 
-> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
+> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [pull request](https://github.com/truewebartisans/useful-playbooks/pulls).
+
+## 📺 Media
+
+A list of articles and video lessons, where `new_server` playbook is used:
+
+- It's empty for now... 😐
+
+> Make [pull request](https://github.com/truewebartisans/useful-playbooks/pulls) with links to your articles and videos! We will post them right here.
 
 <br/>
 
