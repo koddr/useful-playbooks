@@ -26,7 +26,7 @@ ansible-playbook <playbook_name>-playbook.yml [args] [extra vars...]
 ## 💡 Required information about Ansible
 
 <details>
-<summary>What is Ansible?</summary><br/>
+<summary>🤔 What is Ansible?</summary><br/>
 
 Follow [Wikipedia](<https://en.wikipedia.org/wiki/Ansible_(software)>) page:
 
@@ -39,7 +39,7 @@ _Ansible was written by Michael DeHaan and acquired by Red Hat in 2015. Ansible 
 </details>
 
 <details>
-<summary>Why it's so good to use for me?</summary><br/>
+<summary>👀 Why it's so good to use for me?</summary><br/>
 
 Ansible is a radically simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex changes like zero-downtime rolling updates with load balancers easy.
 
@@ -58,7 +58,7 @@ Ansible is a radically simple IT automation system. It handles configuration man
 </details>
 
 <details>
-<summary>How to work with Ansible and playbooks?</summary><br/>
+<summary>🎯 How to work with Ansible and playbooks?</summary><br/>
 
 1. Be sure, that [Python](https://www.python.org/) (version `3.5` or later) is installed.
 2. Install Ansible for your OS by [this](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible) instructions.
@@ -67,7 +67,7 @@ Ansible is a radically simple IT automation system. It handles configuration man
 </details>
 
 <details>
-<summary>Helpful tools and plugins for working with Ansible</summary><br/>
+<summary>✅ Helpful tools and plugins for working with Ansible</summary><br/>
 
 **VS Code addons:**
 
