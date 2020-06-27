@@ -7,16 +7,16 @@ Configures a fresh remote virtual server with the best practice for `Nginx` conf
 ```bash
 ansible-playbook \
                   new_server-playbook.yml \
-                  --user <user> \
-                  --extra-vars "host=<host>"
+                  --user <USER> \
+                  --extra-vars "host=<HOST>"
 ```
 
 ### Extra vars
 
-- `<user>` (**required**/_optional_) remote user's username (for example, `root`)
-- `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
+- `<USER>` (**required**/_optional_) remote user's username (for example, `root`)
+- `<HOST>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
 
-> 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
+> 👌 Yes, actually you can specify the `<USER>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
 ## Features
 
