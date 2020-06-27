@@ -46,7 +46,7 @@ ansible-playbook \
 
 ## 📺 Media
 
-A list of articles and video lessons, where `new_server` playbook is used:
+A list of articles and video lessons, where `create_ssl` playbook is used:
 
 - It's empty for now... 😐
 
