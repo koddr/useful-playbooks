@@ -1,14 +1,8 @@
 # 🚚 Useful playbooks for easily deploy
 
-<img align="right" width="132px" src=".github/logo.svg" alt="logo"/>
+<img align="right" width="96px" src=".github/logo.svg" alt="logo"/>
 
 Useful [Ansible](https://github.com/ansible/ansible) playbooks for **easily** deploy your website or webapp to **absolutely** fresh virtual server (VDS/VPS or Droplet) launched on GNU/Linux. Only **3 minutes** from the playbook run to complete setup server and start it. **There you go! It just works**.
-
-🔔 Playbooks short list:
-
-- [`new_vds`](https://github.com/truewebartisans/useful-playbooks#new_vds) for auto configure a fresh virtual server
-- [`install_brotli`](https://github.com/truewebartisans/useful-playbooks#install_brotli) for install Brotli module to Nginx
-- [`create_ssl`](https://github.com/truewebartisans/useful-playbooks#create_ssl) for create a new website with SSL certificate
 
 ## ⚡️ Quick start
 
@@ -97,144 +91,16 @@ For better readability, please add two association to your `.vscode/settings.jso
 
 ## 🎯 Available playbooks
 
-<br/>
-
-### `new_vds`
-
-Configures a fresh virtual server with the best practice for `Nginx` config and `UFW` firewall rules.
-
-**Usage:**
-
-```bash
-ansible-playbook \
-                  new_vds-playbook.yml \
-                  --user <user> \
-                  --extra-vars "host=<host>"
-```
-
-**Extra vars:**
-
-- `<user>` (**required**/_optional_) remote user's username (for example, `root`)
-
-> 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
-
-- `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
-
-**Features:**
-
-- Update & Upgrade distributive
-- Added repository:
-  - `ppa:hda-me/nginx-stable` (skipped for Ubuntu `20.04 LTS`)
-- Installed latest versions:
-  - [`Nginx`](https://nginx.org/)
-  - [`UFW`](https://help.ubuntu.com/community/UFW) firewall
-- Configured by the best practice:
-  - Nginx
-  - UFW rules
-
-**Tested to work:**
-
-- Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
-
-> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
-
-<br/>
-
-### `install_brotli`
-
-Installs `Brotli` module for your current `Nginx` version.
-
-> ☝️ Please note, that playbook uses the current version of Nginx installed on your remote server. Check, if it's installed before running!
-
-**Usage:**
-
-```bash
-ansible-playbook \
-                  install_brotli-playbook.yml \
-                  --user <user> \
-                  --extra-vars "host=<host>"
-```
-
-**Extra vars:**
-
-- `<user>` (**required**/_optional_) remote user's username (for example, `root`)
-
-> 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
-
-- `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
-
-**Features:**
-
-- Added lines to files:
-  - `load_module` lines with Brotli module to the start of Nginx config (`/etc/nginx/nginx.conf`)
-- Installed latest versions:
-  - [`Brotli module`](https://github.com/google/ngx_brotli) for Nginx
-  - Packages to `./configure` and run `make` for Brotli module (`git`, `gcc`, `cmake`, `libpcre3`, `libpcre3-dev`, `zlib1g`, `zlib1g-dev`, `openssl`, `libssl-dev`)
-- Configured by the best practice:
-  - Brotli config
-
-**Tested to work:**
-
-- Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
-
-> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
-
-<br/>
-
-### `create_ssl`
-
-Creates a new website folder (called as domain name) and SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org/)_) for it. Included the best practice for `Nginx` config and task for CRON to renew.
-
-**Usage:**
-
-```bash
-ansible-playbook \
-                  create_ssl-playbook.yml \
-                  --user <user> \
-                  --extra-vars "host=<host> domain=<domain>"
-```
-
-**Extra vars:**
-
-- `<user>` (**required**/_optional_) remote user's username (for example, `root`)
-
-> 👌 Yes, actually you can specify the `<user>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
-
-- `<host>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
-- `<domain>` (**required**) domain name without `www` part (for example, `website.com`)
-
-> ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`.
-
-**Features:**
-
-- Added repository:
-  - `ppa:certbot/certbot` (skipped for Ubuntu `20.04 LTS`)
-- Installed latest versions:
-  - [`Certbot`](https://certbot.eff.org/) for Nginx
-- Configured by the best practice:
-  - Nginx config for your domain
-  - SSL certificate for domain
-  - CRON task for automatically renew SSL
-  - HTTP/2 (443 port)
-  - Redirect from `www` to `non-www` domain
-  - Redirect from `http` to `https`
-  - Folder for website files (`/var/www/<domain>/html`)
-
-**Tested to work:**
-
-- Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
-- Debian `10 (Buster)`, `9 (Stretch)`
-
-> 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [PR](https://github.com/truewebartisans/useful-playbooks/pulls).
-
-<br/>
+- [`new_server`](https://github.com/truewebartisans/useful-playbooks/docs/new_server.md) for auto configure a fresh remote virtual server
+- [`install_brotli`](https://github.com/truewebartisans/useful-playbooks/docs/install_brotli.md) for install Brotli module to Nginx
+- [`create_ssl`](https://github.com/truewebartisans/useful-playbooks/docs/create_ssl.md) for create a new website with SSL certificate from Let's Encrypt and auto renew
 
 ## 📺 Media
 
 A list of articles and video lessons, where `useful-playbooks` is used:
 
-- [⚙️ How to install Brotli module for Nginx on Ubuntu 20.04+](https://dev.to/koddr/how-to-install-brotli-module-for-nginx-on-ubuntu-20-04-2ocp) by [Vic Shóstak](https://github.com/koddr) @ 27 Jun 2020
-- [✨ A practical guide to GitHub Actions: build & deploy a static 11ty website to remote virtual server after push](https://dev.to/koddr/automate-that-a-practical-guide-to-github-actions-build-deploy-a-static-11ty-website-to-remote-virtual-server-after-push-d19) by [Vic Shóstak](https://github.com/koddr) @ 01 Jun 2020
+- [⚙️ How to install Brotli module for Nginx on Ubuntu 20.04+](https://dev.to/koddr/how-to-install-brotli-module-for-nginx-on-ubuntu-20-04-2ocp) @ 27 Jun 2020
+- [✨ A practical guide to GitHub Actions: build & deploy a static 11ty website to remote virtual server after push](https://dev.to/koddr/automate-that-a-practical-guide-to-github-actions-build-deploy-a-static-11ty-website-to-remote-virtual-server-after-push-d19) @ 01 Jun 2020
 
 > Make [pull requests](https://github.com/truewebartisans/useful-playbooks/pulls) with links to your articles and videos! We will post them right here.
 
