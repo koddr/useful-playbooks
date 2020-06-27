@@ -1,14 +1,8 @@
 ---
 - hosts: "{{ host }}"
-  gather_facts: yes
+  become: true
 
   tasks:
-
-    - name: Add software-properties-common package
-      apt:
-        pkg: software-properties-common
-        state: latest
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
 
     - name: Add PPA repositories
       apt_repository:
@@ -17,16 +11,13 @@
         - { repo: "ppa:certbot/certbot" }
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
 
-    - name: Update dist
-      apt: 
-        update_cache: yes
-
     - name: Install Certbot
       apt: 
         pkg: "{{ item }}"
         state: latest
         update_cache: yes
       with_items:
+        - certbot
         - python3-certbot-nginx
 
     - name: Create & set chmod USER:USER to /var/www/{{ domain }}/html
@@ -40,12 +31,12 @@
         - { path: "/var/www" }
         - { path: "/var/www/{{ domain }}/html" }
 
-    - name: Add {{ domain }}.conf to /etc/nginx/sites-available
+    - name: Add HTTP version of {{ domain }}.conf to /etc/nginx/sites-available
       template:
         src: ./templates/http-domain.j2
         dest: /etc/nginx/sites-available/{{ domain }}.conf
 
-    - name: Create symbolic link for {{ domain }}.conf to /etc/nginx/sites-enabled
+    - name: Create symbolic link for HTTP version of {{ domain }}.conf to /etc/nginx/sites-enabled
       file:
         state: link
         src: /etc/nginx/sites-available/{{ domain }}.conf
@@ -54,11 +45,35 @@
         group: "{{ ansible_user }}"
         mode: 0644
       notify:
-        - restart_nginx
+        - reload_nginx
+
+    - name: Dry run before create SSL certificate for {{ domain }}
+      command: 
+        cmd: certbot --nginx certonly --agree-tos -m {{ email }} -d {{ domain }} -d www.{{ domain }} --dry-run
+
+    - name: Create SSL certificate for {{ domain }}
+      command: 
+        cmd: certbot --nginx certonly --agree-tos -m {{ email }} -d {{ domain }} -d www.{{ domain }}
+
+    - name: Add HTTPS version of {{ domain }}.conf to /etc/nginx/sites-available
+      template:
+        src: ./templates/https-domain.j2
+        dest: /etc/nginx/sites-available/{{ domain }}.conf
+
+    - name: Create symbolic link for HTTPS version of {{ domain }}.conf to /etc/nginx/sites-enabled
+      file:
+        state: link
+        src: /etc/nginx/sites-available/{{ domain }}.conf
+        dest: /etc/nginx/sites-enabled/{{ domain }}.conf
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0644
+      notify:
+        - reload_nginx
 
   handlers:
   
-    - name: restart_nginx
+    - name: reload_nginx
       service:
         name: nginx
-        state: restarted
+        state: reloaded

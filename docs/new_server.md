@@ -1,6 +1,6 @@
-# [←](https://github.com/truewebartisans/useful-playbooks) `new_server` playbook
+# [←](https://github.com/truewebartisans/useful-playbooks) 📖 `new_server` playbook
 
-Configures a fresh remote virtual server with the best practice for `Nginx` config and `UFW` firewall rules.
+Configures a fresh remote virtual server with the best practice for [`Nginx`](https://nginx.org/en/) config and [`UFW`](https://help.ubuntu.com/community/UFW) firewall rules.
 
 ## Usage
 
@@ -13,16 +13,16 @@ ansible-playbook \
 
 ### Extra vars
 
-- `<USER>` (**required**/_optional_) remote user's username (for example, `root`)
+- `<USER>` (**required**) remote user's username (for example, `root`)
 - `<HOST>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
 
-> 👌 Yes, actually you can specify the `<USER>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
+> 👌 Yes, actually you can specify the `<USER>` argument in your inventory file (`/etc/ansible/hosts`) and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
 ## Features
 
 - Update & Upgrade distributive
 - Added repository:
-  - `ppa:hda-me/nginx-stable`
+  - `ppa:nginx/stable`
     - Skipped for Ubuntu `20.04 LTS`
 - Installed latest versions:
   - [`Nginx`](https://nginx.org/)

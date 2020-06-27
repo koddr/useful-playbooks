@@ -1,6 +1,6 @@
-# [←](https://github.com/truewebartisans/useful-playbooks) `create_ssl` playbook
+# [←](https://github.com/truewebartisans/useful-playbooks) 📖 `create_ssl` playbook
 
-Creates a new website folder (called as domain name) and SSL certificate (_thanks to [Let's Encrypt](https://letsencrypt.org/)_) for it. Included the best practice for `Nginx` config and task for CRON to renew.
+Creates a new website folder and SSL certificate from [`Let's Encrypt`](https://letsencrypt.org/) with auto renew by CRON task.
 
 ## Usage
 
@@ -8,18 +8,19 @@ Creates a new website folder (called as domain name) and SSL certificate (_thank
 ansible-playbook \
                   create_ssl-playbook.yml \
                   --user <USER> \
-                  --extra-vars "host=<HOST> domain=<DOMAIN>"
+                  --extra-vars "host=<HOST> domain=<DOMAIN> email=<EMAIL>"
 ```
 
 ### Extra vars
 
-- `<USER>` (**required**/_optional_) remote user's username (for example, `root`)
+- `<USER>` (**required**) remote user's username (for example, `root`)
 - `<HOST>` (**required**) hostname in your inventory (from `/etc/ansible/hosts` file)
 - `<DOMAIN>` (**required**) domain name without `www` part (for example, `website.com`)
+- `<EMAIL>` (**required**) certificate holder's email address
 
-> 👌 Yes, actually you can specify the `<USER>` argument in your `/etc/ansible/hosts` file and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
+> 👌 Yes, actually you can specify the `<USER>` argument in your inventory file (`/etc/ansible/hosts`) and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 >
-> ☝️ Please note: Certbot can create the SSL certificates for both `website.com` and `www.website.com`.
+> ☝️ Please note: Certbot creates the SSL certificates for both `website.com` and `www.website.com`.
 
 ## Features
 
@@ -27,15 +28,18 @@ ansible-playbook \
   - `ppa:certbot/certbot`
     - Skipped for Ubuntu `20.04 LTS`
 - Installed latest versions:
-  - [`Certbot`](https://certbot.eff.org/) for Nginx
+  - [`Certbot`](https://certbot.eff.org/)
+  - `python3-certbot-nginx`
 - Configured by the best practice:
   - Nginx config for your domain
   - SSL certificate for domain
   - CRON task for automatically renew SSL
-  - HTTP/2 (443 port)
-  - Redirect from `www` to `non-www` domain
+  - HTTP/2 (443 port) by default
+  - Redirect from `www` to `non-www`
   - Redirect from `http` to `https`
-  - Folder for website files (`/var/www/<domain>/html`)
+  - Folder for website files (`/var/www/<DOMAIN>/html`)
+
+> 👍 If you need to change Nginx config for your website, feel free to edit a `/etc/nginx/sites-available/<DOMAIN>.conf` file.
 
 ## Tested to work
 

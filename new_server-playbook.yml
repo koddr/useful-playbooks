@@ -1,25 +1,15 @@
 ---
 - hosts: "{{ host }}"
-  gather_facts: yes
+  become: true
 
   tasks:
-
-    - name: Add software-properties-common package
-      apt:
-        pkg: software-properties-common
-        state: latest
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
 
     - name: Add PPA repositories
       apt_repository:
         repo: "{{ item.repo }}"
       with_items:
-        - { repo: "ppa:hda-me/nginx-stable" }
+        - { repo: "ppa:nginx/stable" }
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_release != 'focal'
-
-    - name: Update packages
-      apt:
-        update_cache: yes
 
     - name: Upgrade dist
       apt:
@@ -62,6 +52,11 @@
         - { name: "OpenSSH", rule: "allow" }
         - { name: "Nginx Full", rule: "allow" }
 
+    - name: Generate OpenSSL DH Parameters cert (2048 bits)
+      openssl_dhparam:
+        path: /etc/ssl/certs/dhparam.pem
+        size: 2048
+
     - name: Enable Nginx during boot
       service:
         name: nginx
@@ -69,11 +64,6 @@
         enabled: yes
       notify:
         - restart_nginx
-
-    - name: Generate OpenSSL DH Parameters (2048 bits)
-      openssl_dhparam:
-        path: /etc/ssl/certs/dhparam.pem
-        size: 2048
 
     - name: Remove unused dependency packages
       apt:

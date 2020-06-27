@@ -1,6 +1,6 @@
 ---
 - hosts: "{{ host }}"
-  gather_facts: yes
+  become: true
 
   tasks:
 
@@ -79,7 +79,7 @@
       with_items:
         - { src: "./configs/brotli.conf", dest: "/etc/nginx/conf.d/brotli.conf" }
       notify:
-        - restart_nginx
+        - reload_nginx
 
     - name: Remove template directories
       file:
@@ -91,7 +91,7 @@
 
   handlers:
 
-    - name: restart_nginx
+    - name: reload_nginx
       service:
         name: nginx
-        state: restarted
+        state: reloaded
