@@ -17,6 +17,12 @@ ansible-playbook <playbook_name>-playbook.yml [args] [extra vars...]
 
 5. Enjoy! 😎
 
+## 🎯 Available playbooks
+
+- [`new_server`](https://github.com/truewebartisans/useful-playbooks/docs/new_server.md) for auto configure a fresh remote virtual server
+- [`install_brotli`](https://github.com/truewebartisans/useful-playbooks/docs/install_brotli.md) for install Brotli module to Nginx
+- [`create_ssl`](https://github.com/truewebartisans/useful-playbooks/docs/create_ssl.md) for create a new website with SSL certificate from Let's Encrypt and auto renew
+
 ## 💡 Required information about Ansible
 
 <details>
@@ -88,12 +94,6 @@ For better readability, please add two association to your `.vscode/settings.jso
 ```
 
 </details>
-
-## 🎯 Available playbooks
-
-- [`new_server`](https://github.com/truewebartisans/useful-playbooks/docs/new_server.md) for auto configure a fresh remote virtual server
-- [`install_brotli`](https://github.com/truewebartisans/useful-playbooks/docs/install_brotli.md) for install Brotli module to Nginx
-- [`create_ssl`](https://github.com/truewebartisans/useful-playbooks/docs/create_ssl.md) for create a new website with SSL certificate from Let's Encrypt and auto renew
 
 ## 📺 Media
 
