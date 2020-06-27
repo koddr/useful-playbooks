@@ -23,7 +23,7 @@
         - nginx
         - ufw
 
-    - name: Create & set chmod USER:USER to /etc/nginx/conf.d
+    - name: Create & set chown USER:USER to /etc/nginx/conf.d
       file:
         state: directory
         path: "{{ item.path }}"
@@ -64,6 +64,14 @@
         enabled: yes
       notify:
         - restart_nginx
+
+    - name: Create & set chown USER:USER to /var/www
+      file: 
+        state: directory
+        path: /var/www
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: 0700
 
     - name: Remove unused dependency packages
       apt:

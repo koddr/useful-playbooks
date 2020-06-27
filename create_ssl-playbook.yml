@@ -20,16 +20,13 @@
         - certbot
         - python3-certbot-nginx
 
-    - name: Create & set chmod USER:USER to /var/www/{{ domain }}/html
+    - name: Create & set chown USER:USER to /var/www/{{ domain }}/html
       file: 
         state: directory
-        path: "{{ item.path }}"
+        path: /var/www/{{ domain }}/html
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
-        mode: 0644
-      with_items:
-        - { path: "/var/www" }
-        - { path: "/var/www/{{ domain }}/html" }
+        mode: 0700
 
     - name: Add HTTP version of {{ domain }}.conf to /etc/nginx/sites-available
       template:
@@ -43,7 +40,7 @@
         dest: /etc/nginx/sites-enabled/{{ domain }}.conf
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
-        mode: 0644
+        mode: 0700
       notify:
         - reload_nginx
 
@@ -67,7 +64,7 @@
         dest: /etc/nginx/sites-enabled/{{ domain }}.conf
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
-        mode: 0644
+        mode: 0700
       notify:
         - reload_nginx
 
