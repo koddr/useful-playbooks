@@ -60,7 +60,7 @@
         - { src: "~/nginx-{{ nginx_version }}/objs/ngx_http_brotli_filter_module.so", dest: "/usr/share/nginx/modules" }
         - { src: "~/nginx-{{ nginx_version }}/objs/ngx_http_brotli_static_module.so", dest: "/usr/share/nginx/modules" }
 
-    - name: Add Brotli module to start of Nginx config
+    - name: Add Brotli module to the start of Nginx config
       lineinfile:
         path: /etc/nginx/nginx.conf
         insertbefore: BOF
