@@ -37,7 +37,7 @@ ansible-playbook \
   - HTTP/2 (443 port) by default
   - Redirect from `www` to `non-www`
   - Redirect from `http` to `https`
-  - Folder for website files (`/var/www/<DOMAIN>/html`)
+  - Folder for the website files (`/var/www/<DOMAIN>/html`)
 
 > 👍 If you need to change Nginx config for your website, feel free to edit a `/etc/nginx/sites-available/<DOMAIN>.conf` file.
 
@@ -47,6 +47,12 @@ ansible-playbook \
 - Debian `10 (Buster)`, `9 (Stretch)`
 
 > 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [pull request](https://github.com/truewebartisans/useful-playbooks/pulls).
+
+### Troubleshooting
+
+- If you will be get an error `Permission Denied` in Nginx logs (right here `/var/log/nginx/error.log`), when visit your website:
+  - Check `chmod` (might be `0700`) and `chown` (might be `<USER>:<USER>`) of the website and `/var/www` folders.
+  - Add parameter `user <USER>;` to the configuration file (`/etc/nginx/nginx.conf`) above `http {...}` and reload web server.
 
 ## 📺 Media
 

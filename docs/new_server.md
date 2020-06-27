@@ -18,12 +18,6 @@ ansible-playbook \
 
 > 👌 Yes, actually you can specify the `<USER>` argument in your inventory file (`/etc/ansible/hosts`) and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
-### Troubleshooting
-
-- If you will be get an error `Permission Denied` in Nginx logs (right here `/var/log/nginx/error.log`), when visit your website:
-  - Check `chmod` (might be `0700`) and `chown` (might be `<USER>:<USER>`) of the website folder.
-  - Add parameter `user <USER>;` to the configuration file (`/etc/nginx/nginx.conf`) above `http {...}` and reload web server.
-
 ## Features
 
 - Update & Upgrade distributive
@@ -42,6 +36,12 @@ ansible-playbook \
 - Ubuntu `20.04+ LTS`, `18.04+ LTS`, `16.04+ LTS`
 
 > 😉 Hey, if you have tested other versions and/or OS, please write [issue](https://github.com/truewebartisans/useful-playbooks/issues/new) or send [pull request](https://github.com/truewebartisans/useful-playbooks/pulls).
+
+### Troubleshooting
+
+- If you will be get an error `Permission Denied` in Nginx logs (right here `/var/log/nginx/error.log`), when visit your website:
+  - Check `chmod` (might be `0700`) and `chown` (might be `<USER>:<USER>`) of the website folder.
+  - Add parameter `user <USER>;` to the configuration file (`/etc/nginx/nginx.conf`) above `http {...}` and reload web server.
 
 ## 📺 Media
 
