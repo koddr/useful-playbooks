@@ -18,7 +18,7 @@ ansible-playbook \
 
 > 👌 Yes, actually you can specify the `<USER>` argument in your inventory file (`/etc/ansible/hosts`) and do not place it here. We use the `{{ ansible_user }}` variable in playbook to point to the remote user.
 
-## Additional configuration
+### Additional configuration
 
 Please, create a `.env` file with the following structure (where this playbook is located):
 
