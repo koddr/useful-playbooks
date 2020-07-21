@@ -2,7 +2,7 @@
 
 Automate a backup process of your GitHub accounts (repositories, gists, organizations).
 
-> ☝️ Please note, it's not a simple `git clone` command! This playbook make a full backup of all the history, commits, a pull-requests and releases of your repository. It was possible thanks to [python-github-backup](https://github.com/josegonzalez/python-github-backup) package.
+> ☝️ Please note, it's not a simple `git clone` command! This playbook make a **full backup** of all history, commits, pull-requests and releases of your repository. It was possible thanks to [python-github-backup](https://github.com/josegonzalez/python-github-backup) package.
 
 ## Usage
 
