@@ -1,5 +1,10 @@
+# Ansible playbook for create SSL certificate for your domains (by Let's Encrypt).
+# For more information, please visit https://github.com/truewebartisans/useful-playbooks
+# Author: Vic Shóstak <truewebartisans@gmail.com> & True web artisans (https://1wa.co)
+# License: MIT
+
 ---
-- hosts: "{{ host }}"
+- hosts: "{{ host|default('localhost') }}"
   become: true
 
   tasks:
