@@ -69,7 +69,7 @@ TIME_ZONE=America/Chicago
 
 A list of articles and video lessons, where `github_backup` playbook is used:
 
-- It's empty for now... 😐
+- [☕️ Let's automate a backup process of your GitHub accounts, organizations & repositories](https://dev.to/koddr/let-s-automate-a-backup-process-of-your-github-accounts-organizations-repositories-46nd) @ 21 Jun 2020
 
 > Make [pull request](https://github.com/truewebartisans/useful-playbooks/pulls) with links to your articles and videos! We will post them right here.
 
